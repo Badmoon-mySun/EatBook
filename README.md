@@ -1,2 +1,2 @@
 # EatBook
-Java servlet web-site
+Java web-site on servlets
