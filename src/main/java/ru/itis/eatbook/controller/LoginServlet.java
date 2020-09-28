@@ -25,12 +25,10 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        System.out.println(username + " " + password);
-
         PrintWriter printWriter = resp.getWriter();
 
         UserDAOImpl userDAO = new UserDAOImpl();
-        User user = userDAO.findByName(username);
+        User user = userDAO.findById(1L);
 
         if (user != null) {
             if (user.getPassword().equals(password)) {
