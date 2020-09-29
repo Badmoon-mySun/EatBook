@@ -1,8 +1,6 @@
 package ru.itis.eatbook.controller;
 
 import lombok.SneakyThrows;
-import ru.itis.eatbook.dao.UserDAOImpl;
-import ru.itis.eatbook.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,18 +25,18 @@ public class LoginServlet extends HttpServlet {
 
         PrintWriter printWriter = resp.getWriter();
 
-        UserDAOImpl userDAO = new UserDAOImpl();
-        User user = userDAO.findById(1L);
-
-        if (user != null) {
-            if (user.getPassword().equals(password)) {
-                printWriter.write("SUCCESS");
-                req.getSession().setAttribute("user", user);
-            } else {
-                printWriter.write("PASSWORD DONT RIGHT");
-            }
-        } else {
-            printWriter.write("USER DONT FOUND");
-        }
+//        UserDAOImpl userDAO = new UserDAOImpl();
+//        User user = userDAO.findById(1L);
+//
+//        if (user != null) {
+//            if (user.getPassword().equals(password)) {
+//                printWriter.write("SUCCESS");
+//                req.getSession().setAttribute("user", user);
+//            } else {
+//                printWriter.write("PASSWORD DONT RIGHT");
+//            }
+//        } else {
+//            printWriter.write("USER DONT FOUND");
+//        }
     }
 }
