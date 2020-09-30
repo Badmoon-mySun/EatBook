@@ -1,8 +1,8 @@
-package ru.itis.eatbook.controller;
+package ru.itis.eatbook.controllers;
 
 import ru.itis.eatbook.factory.DataSourceFactory;
-import ru.itis.eatbook.model.User;
-import ru.itis.eatbook.repository.UsersRepositoryJdbcImpl;
+import ru.itis.eatbook.models.User;
+import ru.itis.eatbook.repositories.UsersRepositoryJdbcImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

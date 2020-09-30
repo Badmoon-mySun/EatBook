@@ -1,4 +1,4 @@
-package ru.itis.eatbook.controller;
+package ru.itis.eatbook.controllers;
 
 import lombok.SneakyThrows;
 

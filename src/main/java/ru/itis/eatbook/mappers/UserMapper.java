@@ -1,6 +1,6 @@
 package ru.itis.eatbook.mappers;
 
-import ru.itis.eatbook.model.User;
+import ru.itis.eatbook.models.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

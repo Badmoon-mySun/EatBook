@@ -16,6 +16,10 @@ public class SimpleJdbcTemplate {
         this.connection = connection;
     }
 
+    public void update(String sql, Object ... args) {
+        getResultSet(sql, args);
+    }
+
     public <T> List<T> queryForList(String sql, RowMapper<T> rowMapper, Object... args) {
         try {
             List<T> result = new ArrayList<>();

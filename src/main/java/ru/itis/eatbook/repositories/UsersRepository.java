@@ -1,6 +1,6 @@
-package ru.itis.eatbook.repository;
+package ru.itis.eatbook.repositories;
 
-import ru.itis.eatbook.model.User;
+import ru.itis.eatbook.models.User;
 
 import java.util.Optional;
 

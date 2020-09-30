@@ -1,7 +1,7 @@
-package ru.itis.eatbook.repository;
+package ru.itis.eatbook.repositories;
 
 import ru.itis.eatbook.mappers.UserMapper;
-import ru.itis.eatbook.model.User;
+import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.utils.SimpleJdbcTemplate;
 
 import java.sql.Connection;
@@ -19,6 +19,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String FIND_BY_ID = "SELECT * FROM USER WHERE id = ?";
     //language=SQL
     private final String FIND_BY_EMAIL = "SELECT * FROM USER WHERE email = ?";
+    //language=Sql
+    private final String SAVE = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     public UsersRepositoryJdbcImpl(Connection connection) {
         jdbcTemplate = new SimpleJdbcTemplate(connection);
@@ -27,7 +29,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     @Override
     public void save(User entity) {
-
+        jdbcTemplate.update(SAVE, entity.getName(), entity.getAvatar(),
+                entity.getAge(), entity.getEmail(), entity.getPhone(),
+                entity.getPassword(), entity.getUuid());
     }
 
     @Override

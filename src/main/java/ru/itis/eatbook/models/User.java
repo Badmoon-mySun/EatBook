@@ -1,4 +1,4 @@
-package ru.itis.eatbook.model;
+package ru.itis.eatbook.models;
 
 import lombok.*;
 
@@ -16,4 +16,5 @@ public class User {
     private String email;
     private String phone;
     private String password;
+    private Integer uuid;
 }
