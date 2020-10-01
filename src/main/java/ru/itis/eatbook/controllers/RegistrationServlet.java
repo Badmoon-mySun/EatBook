@@ -1,6 +1,8 @@
 package ru.itis.eatbook.controllers;
 
 import ru.itis.eatbook.models.User;
+import ru.itis.eatbook.services.HashingPasswordService;
+import ru.itis.eatbook.services.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
@@ -20,28 +21,23 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            byte[] bytes = md5.digest(req.getParameter("password").getBytes());
-            StringBuilder builder = new StringBuilder();
-            for (byte b : bytes) {
-                builder.append(String.format("%02X", b));
-            }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-            System.out.println(builder.toString());
+        UsersService usersService = (UsersService) getServletContext().getAttribute("usersService");
 
-            User user = User.builder()
-                    .name(req.getParameter("name"))
-                    .email(req.getParameter("email"))
-                    .phone(req.getParameter("phone"))
-                    .password(builder.toString())
-                    .build();
+        HashingPasswordService hashPassword =
+                (HashingPasswordService) getServletContext().getAttribute("hashingPassword");
+        String password = hashPassword.hashing(req.getParameter("password"));
 
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException(e);
-        }
+        User user = User.builder()
+                .name(req.getParameter("name"))
+                .email(req.getParameter("email"))
+                .phone(req.getParameter("phone"))
+                .password(password)
+                .uuid(UUID.randomUUID().toString())
+                .build();
 
-
+        usersService.saveUser(user);
+        resp.sendRedirect("/login");
     }
 }

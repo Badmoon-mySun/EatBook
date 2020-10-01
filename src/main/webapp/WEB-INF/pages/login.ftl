@@ -3,7 +3,7 @@
 <@auth.auth "Login" "">
     <form action="" method="post" id="register">
         <fieldset class="fields">
-            <label for="email">Эл.почта</label><input type="email" id="email">
+            <label for="email">Эл.почта</label><input type="email" id="email" >
             <span></span><br>
             <label for="password">Пароль</label><input type="password" id="password">
             <span></span><br>
