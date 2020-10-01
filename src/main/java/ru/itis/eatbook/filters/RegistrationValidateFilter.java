@@ -3,14 +3,12 @@ package ru.itis.eatbook.filters;
 import ru.itis.eatbook.services.UsersService;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-@WebFilter("/registration")
-public class RegistrationFilter implements Filter {
+public class RegistrationValidateFilter implements Filter {
     Pattern nameParent = Pattern.compile("^[А-Яа-яЁёA-Za-z]+$");
     Pattern emailPattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
     Pattern phoneParent = Pattern.compile("(\\+7)+[0-9]{10}");

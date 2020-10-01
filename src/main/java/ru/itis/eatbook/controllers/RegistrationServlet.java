@@ -5,14 +5,12 @@ import ru.itis.eatbook.services.HashingPasswordService;
 import ru.itis.eatbook.services.UsersService;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
 
-@WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +19,7 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
         UsersService usersService = (UsersService) getServletContext().getAttribute("usersService");
 
@@ -38,6 +36,7 @@ public class RegistrationServlet extends HttpServlet {
                 .build();
 
         usersService.saveUser(user);
-        resp.sendRedirect("/login");
+        usersService.authorizeUser(user, req, resp);
+        doGet(req, resp);
     }
 }

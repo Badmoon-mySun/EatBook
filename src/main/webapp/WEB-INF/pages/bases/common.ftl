@@ -1,5 +1,3 @@
-<#assign style = "">
-
 <#macro common title style script>
 <html>
 <head>
@@ -10,8 +8,8 @@
     <body>
         <#nested>
     </body>
-<script src="${script}"></script>
+<#if script != "">
+    <script src="${script}"></script>
+</#if>
 </html>
 </#macro>
-
-
