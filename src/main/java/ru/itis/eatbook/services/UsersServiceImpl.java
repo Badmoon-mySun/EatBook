@@ -43,7 +43,6 @@ public class UsersServiceImpl implements UsersService {
 
         Cookie authCookie = new Cookie("session", user.getUuid());
         httpResponse.addCookie(authCookie);
-        System.out.println(authCookie.getName() + " " + authCookie.getValue());
     }
 
     @Override
@@ -58,6 +57,20 @@ public class UsersServiceImpl implements UsersService {
         }
 
         return null;
+    }
+
+    @Override
+    public void logout(ServletRequest request, ServletResponse response) {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+
+        httpRequest.getSession().setMaxInactiveInterval(1);
+        for (Cookie cookie : httpRequest.getCookies()) {
+            if (cookie.getName().equals("session")) {
+                cookie.setMaxAge(1);
+                httpResponse.addCookie(cookie);
+            }
+        }
     }
 
     @Override

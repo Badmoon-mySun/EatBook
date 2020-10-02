@@ -1,5 +1,20 @@
 <#import "bases/authorization_base.ftl" as auth>
 
+<#assign header in auth>
+    <div class="title">
+        <h1>
+            <a class="a1"> Новый аккаунт </a>
+        </h1>
+    </div>
+
+    <div class="title2">
+        <big>
+            <a class="big1">У вас уже есть аккуант EatBook?</a>
+            <a class="big2" href="/login">Войти</a>
+        </big>
+    </div>
+</#assign>
+
 <@auth.auth "Registration" "/components/js/registration.js">
     <form action="${uri}" method="post" id="register" name="form" onsubmit="return validateForm()">
         <fieldset class="fields">

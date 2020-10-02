@@ -1,5 +1,20 @@
 <#import "bases/authorization_base.ftl" as auth>
 
+<#assign header in auth>
+    <div class="title">
+        <h1>
+            <a class="a1"> Вход </a>
+        </h1>
+    </div>
+
+    <div class="title2">
+        <big>
+            <a class="big1">У вас ещё нет аккаунта?</a>
+            <a class="big2" href="/registration">Создать</a>
+        </big>
+    </div>
+</#assign>
+
 <@auth.auth "Login" "">
     <form action="${uri}" method="post" id="register">
         <fieldset class="fields">

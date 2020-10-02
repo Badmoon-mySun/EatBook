@@ -28,13 +28,13 @@ public class RegistrationValidateFilter implements Filter {
             String password2 = request.getParameter("password2");
 
             String error = null;
-            if (!nameParent.matcher(name).matches()) {
+            if (name == null || !nameParent.matcher(name).matches()) {
                 error = "Invalid name";
-            } else if (!emailPattern.matcher(email).matches()) {
+            } else if (email == null || !emailPattern.matcher(email).matches()) {
                 error = "Invalid email";
             } else if (usersService.getUserByEmail(email).isPresent()) {
                 error = "A user with this email already exists";
-            } else if (!phoneParent.matcher(phone).matches()) {
+            } else if (phone == null || !phoneParent.matcher(phone).matches()) {
                 error = "Invalid phone";
             } else if (password == null || !password.equals(password2)) {
                 error = "Passwords do not match";

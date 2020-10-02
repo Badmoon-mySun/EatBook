@@ -13,7 +13,7 @@ public class RegistrationAndLoginFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         HttpSession session = httpRequest.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
+        if (session != null && session.getAttribute("user") != null) {
             httpResponse.sendRedirect("/home");
             return;
         }

@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
                 usersService.setCookie(user, resp);
             }
             usersService.setSession(user, req);
+            resp.sendRedirect("home");
         } else {
             req.setAttribute("email", email);
             req.setAttribute("error", "The username or password you entered is incorrect");

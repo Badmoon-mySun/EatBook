@@ -179,12 +179,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>ru.itis.eatbook.controllers.TestServlet</servlet-class>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 <!--    -->
 
@@ -210,7 +210,7 @@
 
     <filter>
         <filter-name>registrationAndLogin</filter-name>
-        <filter-class>ru.itis.eatbook.filters.RegistrationValidateFilter</filter-class>
+        <filter-class>ru.itis.eatbook.filters.RegistrationAndLoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>registrationAndLogin</filter-name>
@@ -220,11 +220,20 @@
 
     <filter>
         <filter-name>registrationValidate</filter-name>
-        <filter-class>ru.itis.eatbook.filters.RegistrationAndLoginFilter</filter-class>
+        <filter-class>ru.itis.eatbook.filters.RegistrationValidateFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>registrationValidate</filter-name>
         <servlet-name>registration</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>loginValidate</filter-name>
+        <filter-class>ru.itis.eatbook.filters.LoginValidateFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginValidate</filter-name>
+        <servlet-name>login</servlet-name>
     </filter-mapping>
 <!--    -->
 </web-app>

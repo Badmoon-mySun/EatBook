@@ -16,6 +16,7 @@ public interface UsersService {
     void setSession(UserDto user, ServletRequest request);
     void setCookie(UserDto user, ServletResponse response);
     UserDto authorize(String email, String password);
+    void logout(ServletRequest request, ServletResponse response);
     Optional<User> getUserById(Long id);
     Optional<User> getUserByUuid(String uuid);
     Optional<User> getUserByEmail(String email);

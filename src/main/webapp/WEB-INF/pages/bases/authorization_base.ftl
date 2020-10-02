@@ -1,4 +1,5 @@
 <#import "common.ftl" as base>
+<#assign header = "">
 
 <#macro auth title script>
     <#assign style="/components/css/auth.css">
@@ -9,18 +10,7 @@
             </h1>
         </div>
 
-        <div class="title">
-            <h1>
-                <a class="a1"> Вход </a>
-            </h1>
-        </div>
-
-        <div class="title2">
-            <big>
-                <a class="big1">У вас ещё нет аккаунта?</a>
-                <a class="big2" href="/registration">Создать</a>
-            </big>
-        </div>
+        ${header}
 
         <div class="wrapper">
             <div class="form">
