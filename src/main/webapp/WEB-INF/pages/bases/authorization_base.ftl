@@ -4,9 +4,8 @@
     <#assign style="/components/css/auth.css">
     <@base.common "${title}" "${style}" "${script}">
         <div class="log">
-
             <h1>
-                <a class="a2" href="menu.html"> EatBook</a>
+                <a class="a2" href="/home"> EatBook</a>
             </h1>
         </div>
 
@@ -19,7 +18,7 @@
         <div class="title2">
             <big>
                 <a class="big1">У вас ещё нет аккаунта?</a>
-                <a class="big2" href="register.html">Создать</a>
+                <a class="big2" href="/registration">Создать</a>
             </big>
         </div>
 

@@ -1,13 +1,14 @@
 package ru.itis.eatbook.controllers;
 
 import lombok.SneakyThrows;
+import ru.itis.eatbook.dto.UserDto;
+import ru.itis.eatbook.services.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet {
     @Override
@@ -18,12 +19,24 @@ public class LoginServlet extends HttpServlet {
 
     @SneakyThrows
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String checkbox = req.getParameter("remember");
-        System.out.println(email);
-        System.out.println(password);
-        System.out.println(checkbox);
+        String remember = req.getParameter("remember");
+
+        UsersService usersService = (UsersService) getServletContext().getAttribute("usersService");
+
+        UserDto user = usersService.authorize(email, password);
+
+        if (user != null) {
+            if (remember != null) {
+                usersService.setCookie(user, resp);
+            }
+            usersService.setSession(user, req);
+        } else {
+            req.setAttribute("email", email);
+            req.setAttribute("error", "The username or password you entered is incorrect");
+            doGet(req, resp);
+        }
     }
 }

@@ -20,6 +20,7 @@ public class UserDto {
     public static UserDto castToUserDto(User user) {
         return UserDto.builder()
                 .name(user.getName())
+                .avatar(user.getAvatar())
                 .age(user.getAge())
                 .email(user.getEmail())
                 .phone(user.getPhone())

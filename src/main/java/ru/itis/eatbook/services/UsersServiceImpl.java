@@ -31,21 +31,33 @@ public class UsersServiceImpl implements UsersService {
         usersRepository.save(user);
     }
 
-    @Override
-    public void authorizeUser(User user, ServletRequest request, ServletResponse response) {
-        authorizeUser(UserDto.castToUserDto(user), request, response);
-    }
-
-    @Override
-    public void authorizeUser(UserDto user, ServletRequest request, ServletResponse response) {
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
+    public void setSession(UserDto user, ServletRequest request) {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-
-        Cookie authCookie = new Cookie("session", user.getUuid());
-        httpResponse.addCookie(authCookie);
 
         HttpSession session = httpRequest.getSession();
         session.setAttribute("user", user);
+    }
+
+    public void setCookie(UserDto user, ServletResponse response) {
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+
+        Cookie authCookie = new Cookie("session", user.getUuid());
+        httpResponse.addCookie(authCookie);
+        System.out.println(authCookie.getName() + " " + authCookie.getValue());
+    }
+
+    @Override
+    public UserDto authorize(String email, String password) {
+        Optional<User> optionalUser = getUserByEmail(email);
+        if (optionalUser.isPresent()) {
+            HashingPasswordService hashingPassword = new HashingPasswordServiceImpl();
+            String hashPassword = hashingPassword.hashing(password);
+            if (optionalUser.get().getPassword().equals(hashPassword)) {
+                return UserDto.castToUserDto(optionalUser.get());
+            }
+        }
+
+        return null;
     }
 
     @Override

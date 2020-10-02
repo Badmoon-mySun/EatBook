@@ -13,8 +13,9 @@ import java.util.Optional;
 public interface UsersService {
     List<User> getAllUsers();
     void saveUser(User user);
-    void authorizeUser(User user, ServletRequest request, ServletResponse response);
-    void authorizeUser(UserDto userdto, ServletRequest request, ServletResponse response);
+    void setSession(UserDto user, ServletRequest request);
+    void setCookie(UserDto user, ServletResponse response);
+    UserDto authorize(String email, String password);
     Optional<User> getUserById(Long id);
     Optional<User> getUserByUuid(String uuid);
     Optional<User> getUserByEmail(String email);

@@ -16,6 +16,7 @@ public class UserMapper implements RowMapper<User> {
                 .email(resultSet.getString("email"))
                 .phone(resultSet.getString("phone"))
                 .password(resultSet.getString("password"))
+                .uuid(resultSet.getString("uuid"))
                 .build();
     }
 }
