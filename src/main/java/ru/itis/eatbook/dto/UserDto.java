@@ -13,6 +13,7 @@ public class UserDto {
     private String name;
     private String avatar;
     private Integer age;
+    private String gender;
     private String email;
     private String phone;
     private String uuid;
@@ -22,6 +23,7 @@ public class UserDto {
                 .name(user.getName())
                 .avatar(user.getAvatar())
                 .age(user.getAge())
+                .gender(user.getGender())
                 .email(user.getEmail())
                 .phone(user.getPhone())
                 .uuid(user.getUuid())

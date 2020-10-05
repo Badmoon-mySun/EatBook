@@ -28,7 +28,6 @@ public class LoginValidateFilter implements Filter {
             if (error != null) {
                 httpRequest.setAttribute("error", error);
                 httpRequest.setAttribute("email", email);
-                httpRequest.setAttribute("uri", httpRequest.getRequestURI());
                 httpRequest.getRequestDispatcher("/WEB-INF/pages/login.ftl")
                         .forward(httpRequest, httpResponse);
                 return;

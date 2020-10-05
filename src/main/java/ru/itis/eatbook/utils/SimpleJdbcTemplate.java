@@ -16,9 +16,10 @@ public class SimpleJdbcTemplate {
         this.dataSource = dataSource;
     }
 
-    public void update(String sql, Object ... args) {
+    public int update(String sql, Object ... args) {
         try {
-            preparedStatementWithArgs(sql, args).executeUpdate();
+            PreparedStatement statement = preparedStatementWithArgs(sql, args);
+            return statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }

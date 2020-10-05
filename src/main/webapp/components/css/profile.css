@@ -1,0 +1,36 @@
+body {
+	color: #b01030; /* Цвет текста */
+    background-color: #1b1b1b;
+}
+.btn btn-primary dropdown-toggle {
+	width: 1000px;
+}
+.nav.navbar-nav li a {
+   color: #b01030;
+ }
+
+.bg-company-red {
+    background-color: black !important;
+}
+
+.navbar-default .navbar-brand {
+    color: #b01030;
+}
+
+.picture {
+  	height: 230px;
+  	width: 250px;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+.picture.sec {
+	margin: auto;
+}
+div.panel.panel-default {
+	height: 432px;
+}
+.edit_butt {
+	width: 195px;
+	height: 50px;
+	margin-top: -10px;
+}

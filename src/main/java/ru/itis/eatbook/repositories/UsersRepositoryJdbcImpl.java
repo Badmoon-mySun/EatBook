@@ -5,7 +5,6 @@ import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.utils.SimpleJdbcTemplate;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,8 +20,13 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String FIND_BY_EMAIL = "SELECT * FROM USER WHERE email = ?";
     //language=SQL
     private final String FIND_BY_UUID = "SELECT * FROM USER WHERE uuid = ?";
-    //language=Sql
-    private final String SAVE = "INSERT INTO user(name, avatar, age, email,phone, password, uuid) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    //language=SQL
+    private final String SAVE = "INSERT INTO user(name, email, phone, password, uuid) VALUES (?, ?, ?, ?, ?)";
+    //language=SQL
+    private  final String DELETE = "DELETE FROM user WHERE id = ?";
+    //language=SQL
+    private  final String UPDATE = "UPDATE user " +
+            "SET name = ?, avatar = ?, age = ?, gender = ?, email = ?, phone = ?, password = ?, uuid = ? WHERE id = ?";
 
     public UsersRepositoryJdbcImpl(DataSource dataSource) {
         jdbcTemplate = new SimpleJdbcTemplate(dataSource);
@@ -30,19 +34,19 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     @Override
     public void save(User entity) {
-        jdbcTemplate.update(SAVE, entity.getName(), entity.getAvatar(),
-                entity.getAge(), entity.getEmail(), entity.getPhone(),
-                entity.getPassword(), entity.getUuid());
+        jdbcTemplate.update(SAVE, entity.getName(), entity.getEmail(),
+                entity.getPhone(), entity.getPassword(), entity.getUuid());
     }
 
     @Override
     public void delete(User entity) {
-
+        jdbcTemplate.update(DELETE, entity.getId());
     }
 
     @Override
     public void update(User entity) {
-
+        jdbcTemplate.update(UPDATE, entity.getName(), entity.getAvatar(), entity.getAge(), entity.getGender(),
+                entity.getEmail(), entity.getPhone(), entity.getPassword(), entity.getUuid(), entity.getId());
     }
 
     @Override

@@ -15,7 +15,6 @@ import java.util.UUID;
 public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("uri", req.getRequestURI());
         req.getRequestDispatcher("/WEB-INF/pages/registration.ftl").forward(req, resp);
     }
 

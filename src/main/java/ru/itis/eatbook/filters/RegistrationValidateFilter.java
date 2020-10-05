@@ -45,7 +45,6 @@ public class RegistrationValidateFilter implements Filter {
                 httpRequest.setAttribute("name", name);
                 httpRequest.setAttribute("phone", phone);
                 httpRequest.setAttribute("email", email);
-                httpRequest.setAttribute("uri", httpRequest.getRequestURI());
                 httpRequest.getRequestDispatcher("/WEB-INF/pages/registration.ftl")
                         .forward(httpRequest, httpResponse);
                 return;
