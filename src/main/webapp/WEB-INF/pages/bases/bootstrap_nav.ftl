@@ -1,4 +1,3 @@
-<#macro nav>
     <nav class="navbar navbar-dark bg-company-red">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -46,4 +45,3 @@
             </div>
         </div>
     </nav>
-</#macro>

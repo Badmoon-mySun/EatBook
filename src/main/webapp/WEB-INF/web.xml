@@ -4,54 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<!--    <servlet>-->
-<!--        <servlet-name>freemarker</servlet-name>-->
-<!--        <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>-->
-
-<!--        &lt;!&ndash; FreemarkerServlet settings: &ndash;&gt;-->
-<!--        <init-param>-->
-<!--            <param-name>TemplatePath</param-name>-->
-<!--            <param-value>/</param-value>-->
-<!--        </init-param>-->
-<!--        <init-param>-->
-<!--            <param-name>NoCache</param-name>-->
-<!--            <param-value>true</param-value>-->
-<!--        </init-param>-->
-<!--        <init-param>-->
-<!--            <param-name>ContentType</param-name>-->
-<!--            <param-value>text/html; charset=UTF-8</param-value>-->
-<!--            &lt;!&ndash; Forces UTF-8 output encoding! &ndash;&gt;-->
-<!--        </init-param>-->
-
-<!--        &lt;!&ndash; FreeMarker settings: &ndash;&gt;-->
-<!--        <init-param>-->
-<!--            <param-name>template_update_delay</param-name>-->
-<!--            <param-value>0</param-value>-->
-<!--            &lt;!&ndash; 0 is for development only! Use higher value otherwise. &ndash;&gt;-->
-<!--        </init-param>-->
-<!--        <init-param>-->
-<!--            <param-name>default_encoding</param-name>-->
-<!--            <param-value>UTF-8</param-value>-->
-<!--            &lt;!&ndash; The encoding of the template files. &ndash;&gt;-->
-<!--        </init-param>-->
-<!--        <init-param>-->
-<!--            <param-name>output_encoding</param-name>-->
-<!--            <param-value>UTF-8</param-value>-->
-<!--        </init-param>-->
-<!--        <init-param>-->
-<!--            <param-name>number_format</param-name>-->
-<!--            <param-value>0.##########</param-value>-->
-<!--        </init-param>-->
-
-<!--        <load-on-startup>1</load-on-startup>-->
-<!--    </servlet>-->
-
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>freemarker</servlet-name>-->
-<!--        <url-pattern>*.ftl</url-pattern>-->
-<!--        <url-pattern>*.ftlh</url-pattern>-->
-<!--        <url-pattern>*.ftlx</url-pattern>-->
-<!--    </servlet-mapping>-->
     <servlet>
         <servlet-name>freemarker</servlet-name>
         <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
@@ -98,7 +50,7 @@
         <init-param>
             <param-name>template_update_delay</param-name>
             <!-- Use 0 during development! Consider what value you need otherwise. -->
-            <param-value>30 s</param-value>
+            <param-value>0 s</param-value>
         </init-param>
         <init-param>
             <param-name>default_encoding</param-name>
@@ -194,6 +146,24 @@
     <servlet-mapping>
         <servlet-name>profile</servlet-name>
         <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>profile-edit</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.ProfileEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>profile-edit</servlet-name>
+        <url-pattern>/profile-edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>aboutUs</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AboutUsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>aboutUs</servlet-name>
+        <url-pattern>/aboutus</url-pattern>
     </servlet-mapping>
 <!--    -->
 

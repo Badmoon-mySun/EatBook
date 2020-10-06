@@ -2,7 +2,7 @@
 <#import "bases/bootstrap_nav.ftl" as nav>
 
 <@common.bootstrap_common "Profile" "/components/css/profile.css" "">
-<@nav.nav/>
+    <#include "bases/bootstrap_nav.ftl">
     <div class="container">
         <div id="main">
             <div class="row" id="real-estates-detail">
@@ -18,14 +18,14 @@
                         <div class="panel-body">
                             <div class="text-center" id="author">
                                 <div class="picture">
-                                    <img class="picture sec" src="/components/image/reg4.jpg">
+                                    <img class="picture" src="/components/image/avatar/${userAvatar}">
                                 </div>
                                 <h3>${username}</h3>
                                 <small class="label label-warning">Казань</small>
                             </div>
                         </div>
                     </div>
-                    <form class="edit_button" action="/edit-profile">
+                    <form class="edit_button" action="/profile-edit">
                         <button class="edit_butt">&#9998; Редактировать профиль</button>
                     </form>
                 </div>
