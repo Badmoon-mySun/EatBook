@@ -1,6 +1,5 @@
 package ru.itis.eatbook.controllers;
 
-import ru.itis.eatbook.dto.UserDto;
 import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.services.HashingPasswordService;
 import ru.itis.eatbook.services.UsersService;
@@ -36,7 +35,7 @@ public class RegistrationServlet extends HttpServlet {
                 .build();
 
         usersService.saveUser(user);
-        usersService.setSession(UserDto.castToUserDto(user), req);
+        usersService.setSession(user, req);
         doGet(req, resp);
     }
 }

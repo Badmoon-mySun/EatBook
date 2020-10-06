@@ -1,6 +1,5 @@
 package ru.itis.eatbook.filters;
 
-import ru.itis.eatbook.dto.UserDto;
 import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.services.UsersService;
 
@@ -29,7 +28,7 @@ public class CheckingUserAuthFilter implements Filter {
                 if (cookie.getName().equals("session")) {
                     Optional<User> userOptional = usersService.getUserByUuid(cookie.getValue());
                     if (userOptional.isPresent()) {
-                        usersService.setSession(UserDto.castToUserDto(userOptional.get()), request);
+                        usersService.setSession(userOptional.get(), request);
                         break;
                     }
                 }

@@ -18,7 +18,7 @@
                         <div class="panel-body">
                             <div class="text-center" id="author">
                                 <div class="picture">
-                                    <img class="picture" src="/components/image/avatar/${userAvatar}">
+                                    <img class="picture" src="/image?name=${userAvatar}">
                                 </div>
                                 <h3>${username}</h3>
                                 <small class="label label-warning">Казань</small>

@@ -1,7 +1,6 @@
 package ru.itis.eatbook.controllers;
 
-import lombok.SneakyThrows;
-import ru.itis.eatbook.dto.UserDto;
+import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.services.UsersService;
 
 import javax.servlet.ServletException;
@@ -16,16 +15,15 @@ public class LoginServlet extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/pages/login.ftl").forward(req, resp);
     }
 
-    @SneakyThrows
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String remember = req.getParameter("remember");
 
         UsersService usersService = (UsersService) getServletContext().getAttribute("usersService");
 
-        UserDto user = usersService.authorize(email, password);
+        User user = usersService.authorize(email, password);
 
         if (user != null) {
             if (remember != null) {

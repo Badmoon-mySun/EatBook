@@ -1,7 +1,5 @@
 package ru.itis.eatbook.controllers;
 
-import ru.itis.eatbook.dto.UserDto;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

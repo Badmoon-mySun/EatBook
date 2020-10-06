@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import ru.itis.eatbook.repositories.UsersRepository;
 import ru.itis.eatbook.repositories.UsersRepositoryJdbcImpl;
+import ru.itis.eatbook.services.FileServiceImpl;
 import ru.itis.eatbook.services.HashingPasswordServiceImpl;
 import ru.itis.eatbook.services.UsersService;
 import ru.itis.eatbook.services.UsersServiceImpl;
@@ -44,5 +45,10 @@ public class AppContextListener implements ServletContextListener {
         servletContext.setAttribute("usersService", usersService);
 
         servletContext.setAttribute("hashingPassword", new HashingPasswordServiceImpl());
+
+        // TODO
+        servletContext.setAttribute("IMAGE_DIR", "C:\\dev\\Projects\\EatBook\\src\\main\\resources\\images");
+
+        servletContext.setAttribute("fileService",  new FileServiceImpl());
     }
 }

@@ -1,6 +1,6 @@
 package ru.itis.eatbook.filters;
 
-import ru.itis.eatbook.dto.UserDto;
+import ru.itis.eatbook.models.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ public class SetAttributeFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
         if (session != null) {
-            UserDto user = (UserDto) session.getAttribute("user");
+            User user = (User) session.getAttribute("user");
             if (user != null) {
                 httpRequest.setAttribute("username", user.getName());
                 httpRequest.setAttribute("userAvatar", user.getAvatar());

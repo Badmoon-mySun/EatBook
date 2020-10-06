@@ -1,8 +1,5 @@
 package ru.itis.eatbook.services;
 
-import com.sun.corba.se.spi.activation.Server;
-import org.omg.CORBA.ServerRequest;
-import ru.itis.eatbook.dto.UserDto;
 import ru.itis.eatbook.models.User;
 
 import javax.servlet.ServletRequest;
@@ -13,11 +10,12 @@ import java.util.Optional;
 public interface UsersService {
     List<User> getAllUsers();
     void saveUser(User user);
-    void setSession(UserDto user, ServletRequest request);
-    void setCookie(UserDto user, ServletResponse response);
-    UserDto authorize(String email, String password);
-    void logout(ServletRequest request, ServletResponse response);
+    void updateUser(User user);
     Optional<User> getUserById(Long id);
     Optional<User> getUserByUuid(String uuid);
     Optional<User> getUserByEmail(String email);
+    User authorize(String email, String password);
+    void logout(ServletRequest request, ServletResponse response);
+    void setSession(User user, ServletRequest request);
+    void setCookie(User user, ServletResponse response);
 }

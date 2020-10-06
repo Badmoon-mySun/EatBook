@@ -165,6 +165,25 @@
         <servlet-name>aboutUs</servlet-name>
         <url-pattern>/aboutus</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userAvatarUpload</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.UserAvatarUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userAvatarUpload</servlet-name>
+        <url-pattern>/user-avatar-upload</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>image</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.ImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>image</servlet-name>
+        <url-pattern>/image</url-pattern>
+    </servlet-mapping>
+
 <!--    -->
 
 

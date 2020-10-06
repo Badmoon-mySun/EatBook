@@ -1,6 +1,5 @@
 package ru.itis.eatbook.services;
 
-import ru.itis.eatbook.dto.UserDto;
 import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.repositories.UsersRepository;
 
@@ -31,14 +30,19 @@ public class UsersServiceImpl implements UsersService {
         usersRepository.save(user);
     }
 
-    public void setSession(UserDto user, ServletRequest request) {
+    @Override
+    public void updateUser(User user) {
+        usersRepository.update(user);
+    }
+
+    public void setSession(User user, ServletRequest request) {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         HttpSession session = httpRequest.getSession();
         session.setAttribute("user", user);
     }
 
-    public void setCookie(UserDto user, ServletResponse response) {
+    public void setCookie(User user, ServletResponse response) {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         Cookie authCookie = new Cookie("session", user.getUuid());
@@ -46,17 +50,19 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public UserDto authorize(String email, String password) {
+    public User authorize(String email, String password) {
         Optional<User> optionalUser = getUserByEmail(email);
+        User user = null;
+
         if (optionalUser.isPresent()) {
             HashingPasswordService hashingPassword = new HashingPasswordServiceImpl();
             String hashPassword = hashingPassword.hashing(password);
             if (optionalUser.get().getPassword().equals(hashPassword)) {
-                return UserDto.castToUserDto(optionalUser.get());
+                user = optionalUser.get();
             }
         }
 
-        return null;
+        return user;
     }
 
     @Override
@@ -64,9 +70,12 @@ public class UsersServiceImpl implements UsersService {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        httpRequest.getSession().setMaxInactiveInterval(1);
+        HttpSession session =  httpRequest.getSession();
+        session.setAttribute("user", null);
+        session.setMaxInactiveInterval(1);
         for (Cookie cookie : httpRequest.getCookies()) {
             if (cookie.getName().equals("session")) {
+                cookie.setValue("null");
                 cookie.setMaxAge(1);
                 httpResponse.addCookie(cookie);
             }
