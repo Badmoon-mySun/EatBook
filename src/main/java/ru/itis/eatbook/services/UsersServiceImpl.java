@@ -2,6 +2,7 @@ package ru.itis.eatbook.services;
 
 import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.repositories.UsersRepository;
+import ru.itis.eatbook.utils.HashingPassword;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -55,8 +56,7 @@ public class UsersServiceImpl implements UsersService {
         User user = null;
 
         if (optionalUser.isPresent()) {
-            HashingPasswordService hashingPassword = new HashingPasswordServiceImpl();
-            String hashPassword = hashingPassword.hashing(password);
+            String hashPassword = HashingPassword.hashing(password);
             if (optionalUser.get().getPassword().equals(hashPassword)) {
                 user = optionalUser.get();
             }

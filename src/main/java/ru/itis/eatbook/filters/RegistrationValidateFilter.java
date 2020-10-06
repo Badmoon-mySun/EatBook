@@ -1,18 +1,14 @@
 package ru.itis.eatbook.filters;
 
 import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.utils.ValidateParams;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 public class RegistrationValidateFilter implements Filter {
-    Pattern nameParent = Pattern.compile("^[А-Яа-яЁёA-Za-z]+$");
-    Pattern emailPattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
-    Pattern phoneParent = Pattern.compile("(\\+7)+[0-9]{10}");
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -28,13 +24,13 @@ public class RegistrationValidateFilter implements Filter {
             String password2 = request.getParameter("password2");
 
             String error = null;
-            if (name == null || !nameParent.matcher(name).matches()) {
+            if (name == null || !ValidateParams.usernameValid(name)) {
                 error = "Invalid name";
-            } else if (email == null || !emailPattern.matcher(email).matches()) {
+            } else if (email == null || !ValidateParams.emailValid(email)) {
                 error = "Invalid email";
             } else if (usersService.getUserByEmail(email).isPresent()) {
                 error = "A user with this email already exists";
-            } else if (phone == null || !phoneParent.matcher(phone).matches()) {
+            } else if (phone == null || !ValidateParams.phoneValid(phone)) {
                 error = "Invalid phone";
             } else if (password == null || !password.equals(password2)) {
                 error = "Passwords do not match";

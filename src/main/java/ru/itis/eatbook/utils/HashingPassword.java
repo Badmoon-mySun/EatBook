@@ -1,11 +1,10 @@
-package ru.itis.eatbook.services;
+package ru.itis.eatbook.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class HashingPasswordServiceImpl implements HashingPasswordService {
-    @Override
-    public String hashing(String password) {
+public class HashingPassword {
+    public static String hashing(String password) {
         StringBuilder builder = new StringBuilder();
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");

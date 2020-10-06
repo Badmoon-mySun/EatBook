@@ -27,12 +27,9 @@ function validateForm() {
                 alert("Имя не должно содержать больше 16 букв");
                 return false;
              }
-             if (age.length > 3 || age.length == 0) {
+             if (age.length > 3) {
                 alert("Возраст должен содержать минимум одну цифру, но не больше 3 цифр");
                 return false;
-             }
-             if (number.length == 0) {
-                alert("Телефон не должен быть пустым полем")
              }
 
              return true;

@@ -235,6 +235,15 @@
     </filter-mapping>
 
     <filter>
+        <filter-name>userProfileValidate</filter-name>
+        <filter-class>ru.itis.eatbook.filters.UserProfileValidateFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>userProfileValidate</filter-name>
+        <servlet-name>profile-edit</servlet-name>
+    </filter-mapping>
+
+    <filter>
         <filter-name>setAttribute</filter-name>
         <filter-class>ru.itis.eatbook.filters.SetAttributeFilter</filter-class>
     </filter>

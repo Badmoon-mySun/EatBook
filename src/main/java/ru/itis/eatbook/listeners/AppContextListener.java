@@ -5,7 +5,6 @@ import com.zaxxer.hikari.HikariDataSource;
 import ru.itis.eatbook.repositories.UsersRepository;
 import ru.itis.eatbook.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.eatbook.services.FileServiceImpl;
-import ru.itis.eatbook.services.HashingPasswordServiceImpl;
 import ru.itis.eatbook.services.UsersService;
 import ru.itis.eatbook.services.UsersServiceImpl;
 
@@ -21,19 +20,21 @@ public class AppContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext servletContext = servletContextEvent.getServletContext();
-        Properties properties = new Properties();
+        Properties dbProperties = new Properties();
+        Properties directoryProperties = new Properties();
         try {
-            properties.load(servletContext.getResourceAsStream("/WEB-INF/properties/db.properties"));
+            dbProperties.load(servletContext.getResourceAsStream("/WEB-INF/properties/db.properties"));
+            directoryProperties.load(servletContext.getResourceAsStream("/WEB-INF/properties/dir.properties"));
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
         // upload properties
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setDriverClassName(properties.getProperty("MYSQL_DB_DRIVER_CLASS"));
-        hikariConfig.setJdbcUrl(properties.getProperty("MYSQL_DB_URL"));
-        hikariConfig.setUsername(properties.getProperty("MYSQL_DB_USERNAME"));
-        hikariConfig.setPassword(properties.getProperty("MYSQL_DB_PASSWORD"));
-        hikariConfig.setMaximumPoolSize(Integer.parseInt(properties.getProperty("MYSQL_DB_MAX_POOL_SIZE")));
+        hikariConfig.setDriverClassName(dbProperties.getProperty("MYSQL_DB_DRIVER_CLASS"));
+        hikariConfig.setJdbcUrl(dbProperties.getProperty("MYSQL_DB_URL"));
+        hikariConfig.setUsername(dbProperties.getProperty("MYSQL_DB_USERNAME"));
+        hikariConfig.setPassword(dbProperties.getProperty("MYSQL_DB_PASSWORD"));
+        hikariConfig.setMaximumPoolSize(Integer.parseInt(dbProperties.getProperty("MYSQL_DB_MAX_POOL_SIZE")));
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 
         //# Send to servlet context
@@ -44,10 +45,7 @@ public class AppContextListener implements ServletContextListener {
 
         servletContext.setAttribute("usersService", usersService);
 
-        servletContext.setAttribute("hashingPassword", new HashingPasswordServiceImpl());
-
-        // TODO
-        servletContext.setAttribute("IMAGE_DIR", "C:\\dev\\Projects\\EatBook\\src\\main\\resources\\images");
+        servletContext.setAttribute("IMAGE_DIR", directoryProperties.getProperty("image_load_dir"));
 
         servletContext.setAttribute("fileService",  new FileServiceImpl());
     }

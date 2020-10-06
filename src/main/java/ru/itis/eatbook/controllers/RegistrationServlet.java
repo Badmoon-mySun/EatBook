@@ -1,8 +1,8 @@
 package ru.itis.eatbook.controllers;
 
 import ru.itis.eatbook.models.User;
-import ru.itis.eatbook.services.HashingPasswordService;
 import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.utils.HashingPassword;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +22,7 @@ public class RegistrationServlet extends HttpServlet {
 
         UsersService usersService = (UsersService) getServletContext().getAttribute("usersService");
 
-        HashingPasswordService hashPassword =
-                (HashingPasswordService) getServletContext().getAttribute("hashingPassword");
-        String password = hashPassword.hashing(req.getParameter("password"));
+        String password = HashingPassword.hashing(req.getParameter("password"));
 
         User user = User.builder()
                 .name(req.getParameter("name"))
@@ -35,7 +33,6 @@ public class RegistrationServlet extends HttpServlet {
                 .build();
 
         usersService.saveUser(user);
-        usersService.setSession(user, req);
-        doGet(req, resp);
+        resp.sendRedirect("/login");
     }
 }

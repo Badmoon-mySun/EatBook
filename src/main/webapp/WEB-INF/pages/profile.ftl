@@ -48,7 +48,7 @@
                                             <tr><td class="active">Пол:</td><td>${userGender}</td></tr>
                                             <tr><td></td><td></td></tr>
                                         </#if>
-                                        <#if userAge == 0>
+                                        <#if userAge != 0>
                                             <tr><td class="active">Полных лет:</td><td>${userAge}</td></tr>
                                         </#if>
                                         <tr><td></td><td></td></tr>
