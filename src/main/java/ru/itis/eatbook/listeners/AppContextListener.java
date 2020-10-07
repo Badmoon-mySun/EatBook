@@ -2,9 +2,13 @@ package ru.itis.eatbook.listeners;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import ru.itis.eatbook.repositories.DiscountRepositoryJdbcImpl;
+import ru.itis.eatbook.repositories.interfaces.DiscountRepository;
 import ru.itis.eatbook.repositories.interfaces.UsersRepository;
 import ru.itis.eatbook.repositories.UsersRepositoryJdbcImpl;
+import ru.itis.eatbook.services.DiscountsServiceImpl;
 import ru.itis.eatbook.services.FileServiceImpl;
+import ru.itis.eatbook.services.interfaces.DiscountsService;
 import ru.itis.eatbook.services.interfaces.UsersService;
 import ru.itis.eatbook.services.UsersServiceImpl;
 
@@ -44,6 +48,11 @@ public class AppContextListener implements ServletContextListener {
         UsersService usersService = new UsersServiceImpl(usersRepository);
 
         servletContext.setAttribute("usersService", usersService);
+
+        DiscountRepository discountRepository = new DiscountRepositoryJdbcImpl(dataSource);
+        DiscountsService discountsService = new DiscountsServiceImpl(discountRepository);
+
+        servletContext.setAttribute("discountsService", discountsService);
 
         servletContext.setAttribute("IMAGE_DIR", directoryProperties.getProperty("image_load_dir"));
 

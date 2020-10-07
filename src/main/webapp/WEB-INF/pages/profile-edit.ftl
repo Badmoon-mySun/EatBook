@@ -1,7 +1,7 @@
 <#import "bases/bootstrap_common.ftl" as common>
 <#import "bases/bootstrap_nav.ftl" as nav>
 
-<@common.bootstrap_common "Profile" "/components/css/profile.css" "/components/js/registration.js">
+<@common.bootstrap_common "Profile" "/static/css/profile.css" "/static/js/registration.js">
     <#include "bases/bootstrap_nav.ftl">
     <div class="container">
         <div id="main">

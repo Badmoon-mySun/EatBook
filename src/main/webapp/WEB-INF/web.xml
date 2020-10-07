@@ -184,6 +184,14 @@
         <url-pattern>/image</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>discounts</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.DiscountsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>discounts</servlet-name>
+        <url-pattern>/discounts</url-pattern>
+    </servlet-mapping>
 <!--    -->
 
 

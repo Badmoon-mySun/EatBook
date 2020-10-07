@@ -2,7 +2,7 @@
 <#assign header = "">
 
 <#macro auth title script>
-    <#assign style="/components/css/auth.css">
+    <#assign style="/static/css/auth.css">
     <@base.common "${title}" "${style}" "${script}">
         <div class="log">
             <h1>
@@ -17,7 +17,7 @@
                 <#nested>
             </div>
             <div class="picture">
-                <img src="/components/image/schema.png" width="800" height="500">
+                <img src="/static/image/schema.png" width="800" height="500">
             </div>
         </div>
     </@base.common>

@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
+@ToString
 public class Table {
     private Long id;
     private Organization organization;

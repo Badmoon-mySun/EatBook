@@ -24,7 +24,9 @@ public class DiscountMapper implements RowMapper<Discount> {
         return Discount.builder()
                 .id(resultSet.getLong("id"))
                 .organization(organization)
+                .title(resultSet.getString("title"))
                 .info(resultSet.getString("info"))
+                .image(resultSet.getString("image"))
                 .date(resultSet.getString("date"))
                 .build();
     }

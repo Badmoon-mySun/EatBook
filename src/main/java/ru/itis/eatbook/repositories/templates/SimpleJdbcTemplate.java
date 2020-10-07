@@ -3,6 +3,7 @@ package ru.itis.eatbook.repositories.templates;
 import ru.itis.eatbook.repositories.mappers.RowMapper;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +18,8 @@ public class SimpleJdbcTemplate {
     }
 
     public int update(String sql, Object ... args) {
-        try {
-            PreparedStatement statement = preparedStatementWithArgs(sql, args);
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement = preparedStatementWithArgs(connection, sql, args);
             return statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);
@@ -26,10 +27,10 @@ public class SimpleJdbcTemplate {
     }
 
     public <T> List<T> queryForList(String sql, RowMapper<T> rowMapper, Object... args) {
-        try {
+        try (Connection connection = dataSource.getConnection()) {
             List<T> result = new ArrayList<>();
-            PreparedStatement preparedStatement = preparedStatementWithArgs(sql, args);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            PreparedStatement statement = preparedStatementWithArgs(connection, sql, args);
+            ResultSet resultSet = statement.executeQuery();
 
             if (resultSet != null) {
                 while (resultSet.next()) {
@@ -43,10 +44,11 @@ public class SimpleJdbcTemplate {
     }
 
     public <T> T queryForObject(String sql, RowMapper<T> rowMapper, Object... args) {
-        try {
+        try (Connection connection = dataSource.getConnection()) {
             T result = null;
-            PreparedStatement preparedStatement = preparedStatementWithArgs(sql, args);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            PreparedStatement statement = preparedStatementWithArgs(connection, sql, args);
+            ResultSet resultSet = statement.executeQuery();
+
             if (resultSet.next()) {
                 result = rowMapper.mapRow(resultSet);
             }
@@ -56,17 +58,20 @@ public class SimpleJdbcTemplate {
         }
     }
 
-    private PreparedStatement preparedStatementWithArgs(String sql, Object[] args) {
+    private PreparedStatement preparedStatementWithArgs(Connection connection, String sql, Object[] args) {
+        PreparedStatement preparedStatement;
+
         try {
-            PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
+
             int position = 1;
             for (Object arg : args) {
                 preparedStatement.setObject(position, arg);
                 position++;
             }
-            return preparedStatement;
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
+        return preparedStatement;
     }
 }

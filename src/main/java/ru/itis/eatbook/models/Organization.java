@@ -8,11 +8,12 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
+@ToString
 public class Organization {
     private Long id;
     private String name;
     private String type;
     private String address;
     private String image;
-    private String info;
+    private String description;
 }

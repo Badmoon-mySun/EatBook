@@ -1,6 +1,5 @@
 package ru.itis.eatbook.models;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import lombok.*;
 
 @Getter
@@ -9,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
+@ToString
 public class Review {
     private Long id;
     private User user;

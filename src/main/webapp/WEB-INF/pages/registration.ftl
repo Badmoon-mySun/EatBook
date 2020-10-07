@@ -15,7 +15,7 @@
     </div>
 </#assign>
 
-<@auth.auth "Registration" "/components/js/registration.js">
+<@auth.auth "Registration" "/static/js/registration.js">
     <form action="${uri}" method="post" id="register" name="form" onsubmit="return validateForm()">
         <fieldset class="fields">
             <#if error??>

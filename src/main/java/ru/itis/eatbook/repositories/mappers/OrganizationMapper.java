@@ -15,7 +15,7 @@ public class OrganizationMapper implements RowMapper<Organization> {
                 .image(resultSet.getString("image"))
                 .address(resultSet.getString("address"))
                 .type(resultSet.getString("type"))
-                .info(resultSet.getString("info"))
+                .description(resultSet.getString("description"))
                 .build();
     }
 }

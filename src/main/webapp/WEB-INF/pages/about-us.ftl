@@ -1,7 +1,7 @@
 <#import "bases/bootstrap_common.ftl" as common>
 <#import "bases/bootstrap_nav.ftl" as nav>
 
-<@common.bootstrap_common "Home" "/components/css/about-us.css" "">
+<@common.bootstrap_common "Home" "/static/css/about-us.css" "">
     <#include "bases/bootstrap_nav.ftl">
     <div class="log">
         <div class="blog" style="">
@@ -9,7 +9,7 @@
                 <div class="blueInfo" style="text-align: center;"><font size="22">О нас</font></div>
             </div>
             <div class="eatimage" style="text-align: center;">
-                <img src="/components/image/eatbook.jpg" style="width: 250px; height: 210px">
+                <img src="/static/image/eatbook.jpg" style="width: 250px; height: 210px">
                 <h3>EatBook</h3>
             </div>
             <h5 style="width: 220px; margin-top: 22px;">
@@ -23,12 +23,12 @@
 
         <div class="blog">
             <div class="tect" style="text-align: center;">
-                <img class="photoimage" src="/components/image/danil.jpg" style="width: 250px; height: 230px">
+                <img class="photoimage" src="/static/image/danil.jpg" style="width: 250px; height: 230px">
                 <h4>Данил Поварницин</h4>
                 <h4>Front-End</h4>
             </div>
             <div class="tect" style="text-align: center;">
-                <img class="photoimage" src="/components/image/anvar.jpg" style="width: 250px; height: 230px">
+                <img class="photoimage" src="/static/image/anvar.jpg" style="width: 250px; height: 230px">
                 <h4>Анвар Хасанов</h4>
                 <h4>Back-End</h4>
             </div>

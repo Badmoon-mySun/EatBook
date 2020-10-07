@@ -1,7 +1,7 @@
 <#import "bases/bootstrap_common.ftl" as common>
 <#import "bases/bootstrap_nav.ftl" as nav>
 
-<@common.bootstrap_common "Home" "/components/css/menues.css" "">
+<@common.bootstrap_common "Home" "/static/css/menues.css" "">
     <#include "bases/bootstrap_nav.ftl">
     <div class="bg">
         <div class="backpicture">

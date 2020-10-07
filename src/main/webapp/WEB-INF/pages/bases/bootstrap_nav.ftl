@@ -1,3 +1,4 @@
+<div class="polovina1">
     <nav class="navbar navbar-dark bg-company-red">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -45,3 +46,4 @@
             </div>
         </div>
     </nav>
+</div>
