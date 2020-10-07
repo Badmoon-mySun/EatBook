@@ -1,6 +1,6 @@
 package ru.itis.eatbook.controllers;
 
-import ru.itis.eatbook.services.FileService;
+import ru.itis.eatbook.services.interfaces.FileService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

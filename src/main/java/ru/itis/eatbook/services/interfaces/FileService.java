@@ -1,4 +1,4 @@
-package ru.itis.eatbook.services;
+package ru.itis.eatbook.services.interfaces;
 
 import javax.servlet.http.Part;
 import java.io.IOException;

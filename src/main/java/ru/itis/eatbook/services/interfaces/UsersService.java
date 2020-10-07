@@ -1,4 +1,4 @@
-package ru.itis.eatbook.services;
+package ru.itis.eatbook.services.interfaces;
 
 import ru.itis.eatbook.models.User;
 

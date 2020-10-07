@@ -1,4 +1,4 @@
-package ru.itis.eatbook.mappers;
+package ru.itis.eatbook.repositories.mappers;
 
 import ru.itis.eatbook.models.User;
 

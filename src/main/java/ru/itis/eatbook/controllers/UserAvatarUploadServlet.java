@@ -1,8 +1,8 @@
 package ru.itis.eatbook.controllers;
 
 import ru.itis.eatbook.models.User;
-import ru.itis.eatbook.services.FileService;
-import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.services.interfaces.FileService;
+import ru.itis.eatbook.services.interfaces.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

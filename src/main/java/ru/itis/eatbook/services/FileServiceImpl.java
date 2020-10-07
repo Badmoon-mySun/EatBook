@@ -1,5 +1,7 @@
 package ru.itis.eatbook.services;
 
+import ru.itis.eatbook.services.interfaces.FileService;
+
 import javax.servlet.http.Part;
 import java.io.*;
 

@@ -1,7 +1,8 @@
 package ru.itis.eatbook.services;
 
 import ru.itis.eatbook.models.User;
-import ru.itis.eatbook.repositories.UsersRepository;
+import ru.itis.eatbook.repositories.interfaces.UsersRepository;
+import ru.itis.eatbook.services.interfaces.UsersService;
 import ru.itis.eatbook.utils.HashingPassword;
 
 import javax.servlet.ServletRequest;

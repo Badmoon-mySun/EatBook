@@ -1,7 +1,7 @@
 package ru.itis.eatbook.filters;
 
 import ru.itis.eatbook.models.User;
-import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.services.interfaces.UsersService;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;

@@ -1,4 +1,4 @@
-package ru.itis.eatbook.repositories;
+package ru.itis.eatbook.repositories.interfaces;
 
 import java.util.List;
 import java.util.Optional;

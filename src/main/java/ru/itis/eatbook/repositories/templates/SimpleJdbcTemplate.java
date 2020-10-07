@@ -1,6 +1,6 @@
-package ru.itis.eatbook.utils;
+package ru.itis.eatbook.repositories.templates;
 
-import ru.itis.eatbook.mappers.RowMapper;
+import ru.itis.eatbook.repositories.mappers.RowMapper;
 
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
@@ -35,21 +35,6 @@ public class SimpleJdbcTemplate {
                 while (resultSet.next()) {
                     result.add(rowMapper.mapRow(resultSet));
                 }
-            }
-            return result;
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-    }
-
-    public <T> T queryForObject(String sql, Class<T> requiredType, Object... args) {
-        try {
-            T result = null;
-            PreparedStatement preparedStatement = preparedStatementWithArgs(sql, args);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet != null) {
-                resultSet.next();
-                result = resultSet.getObject(1, requiredType);
             }
             return result;
         } catch (SQLException e) {

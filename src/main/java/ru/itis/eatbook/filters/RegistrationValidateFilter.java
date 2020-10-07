@@ -1,6 +1,6 @@
 package ru.itis.eatbook.filters;
 
-import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.services.interfaces.UsersService;
 import ru.itis.eatbook.utils.ValidateParams;
 
 import javax.servlet.*;

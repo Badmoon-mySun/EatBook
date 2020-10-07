@@ -1,8 +1,9 @@
 package ru.itis.eatbook.repositories;
 
-import ru.itis.eatbook.mappers.UserMapper;
+import ru.itis.eatbook.repositories.mappers.UserMapper;
 import ru.itis.eatbook.models.User;
-import ru.itis.eatbook.utils.SimpleJdbcTemplate;
+import ru.itis.eatbook.repositories.interfaces.UsersRepository;
+import ru.itis.eatbook.repositories.templates.SimpleJdbcTemplate;
 
 import javax.sql.DataSource;
 import java.util.List;

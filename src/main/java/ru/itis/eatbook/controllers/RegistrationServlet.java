@@ -1,7 +1,7 @@
 package ru.itis.eatbook.controllers;
 
 import ru.itis.eatbook.models.User;
-import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.services.interfaces.UsersService;
 import ru.itis.eatbook.utils.HashingPassword;
 
 import javax.servlet.ServletException;

@@ -1,6 +1,6 @@
 package ru.itis.eatbook.controllers;
 
-import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.services.interfaces.UsersService;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

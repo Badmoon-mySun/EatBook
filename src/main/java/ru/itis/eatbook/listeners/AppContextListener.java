@@ -2,10 +2,10 @@ package ru.itis.eatbook.listeners;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import ru.itis.eatbook.repositories.UsersRepository;
+import ru.itis.eatbook.repositories.interfaces.UsersRepository;
 import ru.itis.eatbook.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.eatbook.services.FileServiceImpl;
-import ru.itis.eatbook.services.UsersService;
+import ru.itis.eatbook.services.interfaces.UsersService;
 import ru.itis.eatbook.services.UsersServiceImpl;
 
 import javax.servlet.ServletContext;

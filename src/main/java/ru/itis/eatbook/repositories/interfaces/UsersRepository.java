@@ -1,4 +1,4 @@
-package ru.itis.eatbook.repositories;
+package ru.itis.eatbook.repositories.interfaces;
 
 import ru.itis.eatbook.models.User;
 
