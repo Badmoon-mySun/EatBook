@@ -1,9 +1,7 @@
 package ru.itis.eatbook.repositories;
 
 import ru.itis.eatbook.repositories.interfaces.OrganizationRepository;
-import ru.itis.eatbook.repositories.interfaces.UsersRepository;
 import ru.itis.eatbook.repositories.mappers.DiscountMapper;
-import ru.itis.eatbook.repositories.mappers.UserMapper;
 import ru.itis.eatbook.models.Discount;
 import ru.itis.eatbook.repositories.interfaces.DiscountRepository;
 import ru.itis.eatbook.repositories.templates.SimpleJdbcTemplate;
@@ -23,8 +21,12 @@ public class DiscountRepositoryJdbcImpl implements DiscountRepository {
     private final String SQL_FIND_BY_ID = "SELECT * FROM discount WHERE id = ?";
     //language=SQL
     private final String SQL_SAVE =
-            "INSERT INTO discount(organisation_id, title, info, image, date) VALUES (?, ?, ?, ?, ?)";
-
+            "INSERT INTO discount(organization, title, info, image, date) VALUES (?, ?, ?, ?, ?)";
+    //language=SQL
+    private  final String SQL_DELETE = "DELETE FROM discount WHERE id = ?";
+    //language=SQL
+    private  final String SQL_UPDATE = "UPDATE discount " +
+            "SET organization = ?, title = ?, info = ?, image = ?, date = ? WHERE id = ?";
 
     public DiscountRepositoryJdbcImpl(DataSource dataSource) {
         organizationRepository = new OrganizationRepositoryJdbcImpl(dataSource);
@@ -39,12 +41,13 @@ public class DiscountRepositoryJdbcImpl implements DiscountRepository {
 
     @Override
     public void delete(Discount entity) {
-
+        jdbcTemplate.update(SQL_DELETE, entity.getId());
     }
 
     @Override
     public void update(Discount entity) {
-
+        jdbcTemplate.update(SQL_UPDATE, entity.getOrganization().getId(), entity.getTitle(),
+                entity.getInfo(), entity.getImage(), entity.getDate(), entity.getId());
     }
 
     @Override

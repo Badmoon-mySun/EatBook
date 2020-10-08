@@ -14,19 +14,19 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private SimpleJdbcTemplate jdbcTemplate;
 
     //language=SQL
-    private final String FIND_ALL = "SELECT * FROM USER";
+    private final String SQL_FIND_ALL = "SELECT * FROM USER";
     //language=SQL
-    private final String FIND_BY_ID = "SELECT * FROM USER WHERE id = ?";
+    private final String SQL_FIND_BY_ID = "SELECT * FROM USER WHERE id = ?";
     //language=SQL
-    private final String FIND_BY_EMAIL = "SELECT * FROM USER WHERE email = ?";
+    private final String SQL_FIND_BY_EMAIL = "SELECT * FROM USER WHERE email = ?";
     //language=SQL
-    private final String FIND_BY_UUID = "SELECT * FROM USER WHERE uuid = ?";
+    private final String SQL_FIND_BY_UUID = "SELECT * FROM USER WHERE uuid = ?";
     //language=SQL
-    private final String SAVE = "INSERT INTO user(name, email, phone, password, uuid) VALUES (?, ?, ?, ?, ?)";
+    private final String SQL_SAVE = "INSERT INTO user(name, email, phone, password, uuid) VALUES (?, ?, ?, ?, ?)";
     //language=SQL
-    private  final String DELETE = "DELETE FROM user WHERE id = ?";
+    private  final String SQL_DELETE = "DELETE FROM user WHERE id = ?";
     //language=SQL
-    private  final String UPDATE = "UPDATE user " +
+    private  final String SQL_UPDATE = "UPDATE user " +
             "SET name = ?, avatar = ?, age = ?, gender = ?, email = ?, phone = ?, password = ?, uuid = ? WHERE id = ?";
 
     public UsersRepositoryJdbcImpl(DataSource dataSource) {
@@ -35,38 +35,38 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     @Override
     public void save(User entity) {
-        jdbcTemplate.update(SAVE, entity.getName(), entity.getEmail(),
+        jdbcTemplate.update(SQL_SAVE, entity.getName(), entity.getEmail(),
                 entity.getPhone(), entity.getPassword(), entity.getUuid());
     }
 
     @Override
     public void delete(User entity) {
-        jdbcTemplate.update(DELETE, entity.getId());
+        jdbcTemplate.update(SQL_DELETE, entity.getId());
     }
 
     @Override
     public void update(User entity) {
-        jdbcTemplate.update(UPDATE, entity.getName(), entity.getAvatar(), entity.getAge(), entity.getGender(),
+        jdbcTemplate.update(SQL_UPDATE, entity.getName(), entity.getAvatar(), entity.getAge(), entity.getGender(),
                 entity.getEmail(), entity.getPhone(), entity.getPassword(), entity.getUuid(), entity.getId());
     }
 
     @Override
     public List<User> findAll() {
-        return jdbcTemplate.queryForList(FIND_ALL, new UserMapper());
+        return jdbcTemplate.queryForList(SQL_FIND_ALL, new UserMapper());
     }
 
     @Override
     public Optional<User> findById(Long id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_ID, new UserMapper(), id));
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new UserMapper(), id));
     }
 
     @Override
     public Optional<User> findByEmail(String email) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_EMAIL, new UserMapper(), email));
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_EMAIL, new UserMapper(), email));
     }
 
     @Override
     public Optional<User> findByUuid(String uuid) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_UUID, new UserMapper(), uuid));
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_UUID, new UserMapper(), uuid));
     }
 }
