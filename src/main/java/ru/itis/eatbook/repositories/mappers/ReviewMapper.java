@@ -2,6 +2,7 @@ package ru.itis.eatbook.repositories.mappers;
 
 import ru.itis.eatbook.models.Organization;
 import ru.itis.eatbook.models.Review;
+import ru.itis.eatbook.models.Table;
 import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.repositories.interfaces.OrganizationRepository;
 import ru.itis.eatbook.repositories.interfaces.UsersRepository;

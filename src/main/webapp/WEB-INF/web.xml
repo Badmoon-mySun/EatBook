@@ -201,6 +201,15 @@
         <servlet-name>discount</servlet-name>
         <url-pattern>/discount</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>organizationsFeed</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.OrganizationsFeedServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>organizationsFeed</servlet-name>
+        <url-pattern>/organizations</url-pattern>
+    </servlet-mapping>
 <!--    -->
 
 

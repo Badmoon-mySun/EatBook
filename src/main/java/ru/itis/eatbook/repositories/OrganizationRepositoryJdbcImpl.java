@@ -3,6 +3,7 @@ package ru.itis.eatbook.repositories;
 import ru.itis.eatbook.models.Organization;
 import ru.itis.eatbook.repositories.interfaces.OrganizationRepository;
 import ru.itis.eatbook.repositories.mappers.OrganizationMapper;
+import ru.itis.eatbook.repositories.mappers.RowMapper;
 import ru.itis.eatbook.repositories.templates.SimpleJdbcTemplate;
 
 import javax.sql.DataSource;
@@ -10,10 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
+    private RowMapper<Organization> rowMapper;
     private SimpleJdbcTemplate jdbcTemplate;
 
     //language=SQL
-    private final String SQL_FIND_ALL = "SELECT * FROM USER";
+    private final String SQL_FIND_ALL = "SELECT * FROM organization";
     //language=SQL
     private final String SQL_FIND_BY_ID = "SELECT * FROM organization WHERE id = ?";
     //language=SQL
@@ -28,6 +30,7 @@ public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
 
     public OrganizationRepositoryJdbcImpl(DataSource dataSource) {
         jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        rowMapper = new OrganizationMapper();
     }
 
     @Override
@@ -49,11 +52,11 @@ public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
 
     @Override
     public Optional<Organization> findById(Long id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new OrganizationMapper(), id));
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_ID, rowMapper, id));
     }
 
     @Override
     public List<Organization> findAll() {
-        return jdbcTemplate.queryForList(SQL_FIND_ALL,  new OrganizationMapper());
+        return jdbcTemplate.queryForList(SQL_FIND_ALL, rowMapper);
     }
 }

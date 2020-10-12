@@ -3,14 +3,18 @@ package ru.itis.eatbook.listeners;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import ru.itis.eatbook.repositories.DiscountRepositoryJdbcImpl;
+import ru.itis.eatbook.repositories.OrganizationRepositoryJdbcImpl;
+import ru.itis.eatbook.repositories.ReviewRepositoryJdbcImpl;
 import ru.itis.eatbook.repositories.interfaces.DiscountRepository;
+import ru.itis.eatbook.repositories.interfaces.OrganizationRepository;
+import ru.itis.eatbook.repositories.interfaces.ReviewRepository;
 import ru.itis.eatbook.repositories.interfaces.UsersRepository;
 import ru.itis.eatbook.repositories.UsersRepositoryJdbcImpl;
-import ru.itis.eatbook.services.DiscountsServiceImpl;
-import ru.itis.eatbook.services.FileServiceImpl;
+import ru.itis.eatbook.services.*;
 import ru.itis.eatbook.services.interfaces.DiscountsService;
+import ru.itis.eatbook.services.interfaces.OrganizationsService;
+import ru.itis.eatbook.services.interfaces.ReviewsService;
 import ru.itis.eatbook.services.interfaces.UsersService;
-import ru.itis.eatbook.services.UsersServiceImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -53,6 +57,17 @@ public class AppContextListener implements ServletContextListener {
         DiscountsService discountsService = new DiscountsServiceImpl(discountRepository);
 
         servletContext.setAttribute("discountsService", discountsService);
+
+        OrganizationRepository organizationRepository = new OrganizationRepositoryJdbcImpl(dataSource);
+        OrganizationsService organizationsService = new OrganizationServiceImpl(organizationRepository);
+
+        servletContext.setAttribute("organizationsService", organizationsService);
+
+        ReviewRepository reviewRepository =
+                new ReviewRepositoryJdbcImpl(dataSource, organizationRepository, usersRepository);
+        ReviewsService reviewsService = new ReviewsServiceImpl(reviewRepository);
+
+        servletContext.setAttribute("reviewsService", reviewsService);
 
         servletContext.setAttribute("IMAGE_DIR", directoryProperties.getProperty("image_load_dir"));
 

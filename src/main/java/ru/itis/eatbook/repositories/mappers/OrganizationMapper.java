@@ -12,9 +12,9 @@ public class OrganizationMapper implements RowMapper<Organization> {
         return Organization.builder()
                 .id(resultSet.getLong("id"))
                 .name(resultSet.getString("name"))
-                .image(resultSet.getString("image"))
-                .address(resultSet.getString("address"))
                 .type(resultSet.getString("type"))
+                .address(resultSet.getString("address"))
+                .image(resultSet.getString("image"))
                 .description(resultSet.getString("description"))
                 .build();
     }
