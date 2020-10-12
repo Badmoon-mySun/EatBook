@@ -185,12 +185,21 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>discounts</servlet-name>
-        <servlet-class>ru.itis.eatbook.controllers.DiscountsServlet</servlet-class>
+        <servlet-name>discountsFeed</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.DiscountsFeedServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>discounts</servlet-name>
+        <servlet-name>discountsFeed</servlet-name>
         <url-pattern>/discounts</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>discount</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.DiscountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>discount</servlet-name>
+        <url-pattern>/discount</url-pattern>
     </servlet-mapping>
 <!--    -->
 
@@ -249,6 +258,15 @@
     <filter-mapping>
         <filter-name>userProfileValidate</filter-name>
         <servlet-name>profile-edit</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>discountValidate</filter-name>
+        <filter-class>ru.itis.eatbook.filters.DiscountFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>discountValidate</filter-name>
+        <servlet-name>discount</servlet-name>
     </filter-mapping>
 
     <filter>

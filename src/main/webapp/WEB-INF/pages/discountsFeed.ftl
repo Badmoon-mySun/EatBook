@@ -51,7 +51,6 @@
                                 <a href=""><img class="imgCard" src="/image?name=${discount.image}"></a>
                             </div>
                             <div class="loop-action">
-                                <a class="add-to-cart">${discount.title}</a>
                                 <a href="/discount?id=${discount.id}" class="loop-add-to-cart">Перейти к акции</a>
                             </div>
                         </div>

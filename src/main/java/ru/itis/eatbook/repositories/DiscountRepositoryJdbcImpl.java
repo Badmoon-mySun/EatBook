@@ -53,7 +53,7 @@ public class DiscountRepositoryJdbcImpl implements DiscountRepository {
     @Override
     public Optional<Discount> findById(Long id) {
         return Optional.ofNullable(jdbcTemplate.queryForObject(
-                SQL_FIND_BY_ID, new DiscountMapper(organizationRepository)));
+                SQL_FIND_BY_ID, new DiscountMapper(organizationRepository), id));
     }
 
     @Override
