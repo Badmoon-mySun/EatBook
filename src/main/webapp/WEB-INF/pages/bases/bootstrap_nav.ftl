@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/home">Главная</a></li>
-                    <li><a href="/places">Места</a></li>
+                    <li><a href="/organizations">Места</a></li>
                     <li><a href="/discounts">Акции и скидки</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Профиль<b class="caret"></b></a>

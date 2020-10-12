@@ -1,7 +1,7 @@
 <#import "bases/bootstrap_common.ftl" as common>
 <#import "bases/bootstrap_nav.ftl" as nav>
 
-<@common.bootstrap_common "Organizations" "/static/css/restaurantsFeed.css" "">
+<@common.bootstrap_common "Organizations" "/static/css/organizationsFeed.css" "js/search.js">
     <#include "bases/bootstrap_nav.ftl">
     <div class="mainInf">
         <div class="firstInf">

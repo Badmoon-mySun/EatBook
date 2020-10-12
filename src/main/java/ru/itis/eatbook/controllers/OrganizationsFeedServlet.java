@@ -20,6 +20,6 @@ public class OrganizationsFeedServlet extends HttpServlet {
 
         req.setAttribute("organizations", organizations);
 
-        req.getRequestDispatcher("/WEB-INF/pages/restaurantsFeed.ftl").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/organizationsFeed.ftl").forward(req, resp);
     }
 }
