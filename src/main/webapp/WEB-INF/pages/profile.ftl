@@ -18,9 +18,9 @@
                         <div class="panel-body">
                             <div class="text-center" id="author">
                                 <div class="picture">
-                                    <img class="picture" src="/image?name=${userAvatar}">
+                                    <img class="picture" src="/image?name=${user.avatar}">
                                 </div>
-                                <h3>${username}</h3>
+                                <h3>${user.name}</h3>
                                 <small class="label label-warning">Казань</small>
                             </div>
                         </div>
@@ -40,16 +40,16 @@
                                 <div class="tab-pane fade active in" id="detail">
                                     <table class="table table-th-block">
                                         <tbody>
-                                        <tr><td class="active">Электронная почта</td><td>${userEmail}</td></tr>
+                                        <tr><td class="active">Электронная почта</td><td>${user.email}</td></tr>
                                         <tr><td></td><td></td></tr>
-                                        <tr><td class="active">Телефон</td><td>${userPhone}</td></tr>
+                                        <tr><td class="active">Телефон</td><td>${user.phone}</td></tr>
                                         <tr><td></td><td></td></tr>
                                         <#if userGender??>
-                                            <tr><td class="active">Пол:</td><td>${userGender}</td></tr>
+                                            <tr><td class="active">Пол:</td><td>${user.gender}</td></tr>
                                             <tr><td></td><td></td></tr>
                                         </#if>
                                         <#if userAge != 0>
-                                            <tr><td class="active">Полных лет:</td><td>${userAge}</td></tr>
+                                            <tr><td class="active">Полных лет:</td><td>${user.age}</td></tr>
                                         </#if>
                                         <tr><td></td><td></td></tr>
                                         </tbody>

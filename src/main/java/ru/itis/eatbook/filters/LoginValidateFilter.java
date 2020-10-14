@@ -11,7 +11,6 @@ public class LoginValidateFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         if (httpRequest.getMethod().equals("POST")) {
             String email = request.getParameter("email");
@@ -25,10 +24,9 @@ public class LoginValidateFilter implements Filter {
             }
 
             if (error != null) {
-                httpRequest.setAttribute("error", error);
-                httpRequest.setAttribute("email", email);
-                httpRequest.getRequestDispatcher("/WEB-INF/pages/login.ftl")
-                        .forward(httpRequest, httpResponse);
+                request.setAttribute("error", error);
+                request.setAttribute("email", email);
+                request.getRequestDispatcher("/WEB-INF/pages/login.ftl").forward(request, response);
                 return;
             }
         }

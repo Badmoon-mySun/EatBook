@@ -7,9 +7,7 @@ import java.io.IOException;
 public class IdValidateFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest servletRequest = (HttpServletRequest) request;
-
-        String idStr = servletRequest.getParameter("id");
+        String idStr = request.getParameter("id");
 
         try {
             Long.parseLong(idStr);

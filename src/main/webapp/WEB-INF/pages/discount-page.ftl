@@ -4,10 +4,10 @@
 <@common.bootstrap_common "Discount" "/static/css/discount-page.css" "">
     <#include "bases/bootstrap_nav.ftl">
     <div class="bg">
-        <div class="backpicture">
-            <div class="backpicture__img">
-                <img src="/image?name=${discount.image}">
-            </div>
+        <div class="backpicture" style="
+            background: linear-gradient( rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.9)),
+                url('/image?name=${discount.image}') no-repeat center center fixed;
+            background-size: cover;">
             <div class="typetext">
                 <h1><font size="20">${discount.title}</font></h1>
                 <div class="padd" style="padding: 10px">

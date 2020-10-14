@@ -11,13 +11,12 @@ public class UserProfileValidateFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         if (httpRequest.getMethod().equals("POST")) {
-            String name = httpRequest.getParameter("username");
-            String age = httpRequest.getParameter("age");
-            String phone = httpRequest.getParameter("phone");
-            String gender = httpRequest.getParameter("gender");
+            String name = request.getParameter("username");
+            String age = request.getParameter("age");
+            String phone = request.getParameter("phone");
+            String gender = request.getParameter("gender");
 
             String error = null;
             if (name == null || !ValidateParams.usernameValid(name)) {
@@ -31,9 +30,9 @@ public class UserProfileValidateFilter implements Filter {
             }
 
             if (error != null) {
-                httpRequest.setAttribute("error", error);
+                request.setAttribute("error", error);
                 httpRequest.getRequestDispatcher("/WEB-INF/pages/profile-edit.ftl")
-                        .forward(httpRequest, httpResponse);
+                        .forward(request, response);
                 return;
             }
         }

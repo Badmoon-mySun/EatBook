@@ -12,9 +12,8 @@ public class RegistrationValidateFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        UsersService usersService = (UsersService) httpRequest.getServletContext().getAttribute("usersService");
+        UsersService usersService = (UsersService) request.getServletContext().getAttribute("usersService");
 
         if (httpRequest.getMethod().equals("POST")) {
             String name = request.getParameter("name");
@@ -37,12 +36,12 @@ public class RegistrationValidateFilter implements Filter {
             }
 
             if (error != null) {
-                httpRequest.setAttribute("error", error);
-                httpRequest.setAttribute("name", name);
-                httpRequest.setAttribute("phone", phone);
-                httpRequest.setAttribute("email", email);
-                httpRequest.getRequestDispatcher("/WEB-INF/pages/registration.ftl")
-                        .forward(httpRequest, httpResponse);
+                request.setAttribute("error", error);
+                request.setAttribute("name", name);
+                request.setAttribute("phone", phone);
+                request.setAttribute("email", email);
+                request.getRequestDispatcher("/WEB-INF/pages/registration.ftl")
+                        .forward(request, response);
                 return;
             }
         }

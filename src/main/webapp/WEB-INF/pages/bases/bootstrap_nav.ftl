@@ -21,7 +21,7 @@
                         <ul class="dropdown-menu">
                             <li class="divider"></li>
                             <li><a href="/profile">Мой профиль</a></li>
-                            <#if username??>
+                            <#if user??>
                                 <li class="divider"></li>
                                 <li><a href="/logout">Выйти из профиля</a></li>
                             </#if>
@@ -30,9 +30,9 @@
                     <li><a href="/aboutus">Контакты</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <#if username??>
+                    <#if user??>
                         <li>
-                            <a href="/profile">Здравствуйте, ${username}</a>
+                            <a href="/profile">Здравствуйте, ${user.name}</a>
                         </li>
                     <#else>
                         <li>

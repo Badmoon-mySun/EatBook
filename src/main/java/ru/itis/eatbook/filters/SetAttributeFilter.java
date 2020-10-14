@@ -16,16 +16,9 @@ public class SetAttributeFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
         if (session != null) {
-            User user = (User) session.getAttribute("user");
-            if (user != null) {
-                httpRequest.setAttribute("username", user.getName());
-                httpRequest.setAttribute("userAvatar", user.getAvatar());
-                httpRequest.setAttribute("userAge", user.getAge());
-                httpRequest.setAttribute("userGender", user.getGender());
-                httpRequest.setAttribute("userEmail", user.getEmail());
-                httpRequest.setAttribute("userPhone", user.getPhone());
-            }
+            httpRequest.setAttribute("user", session.getAttribute("user"));
         }
+
         chain.doFilter(request, response);
     }
 }
