@@ -29,6 +29,7 @@ public class DiscountRepositoryJdbcImpl implements DiscountRepository {
             "SET organization = ?, title = ?, info = ?, image = ?, date = ? WHERE id = ?";
 
     public DiscountRepositoryJdbcImpl(DataSource dataSource) {
+        // TODO rowmapper
         organizationRepository = new OrganizationRepositoryJdbcImpl(dataSource);
         jdbcTemplate = new SimpleJdbcTemplate(dataSource);
     }

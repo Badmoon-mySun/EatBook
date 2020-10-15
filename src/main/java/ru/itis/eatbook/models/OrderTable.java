@@ -2,6 +2,8 @@ package ru.itis.eatbook.models;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -9,10 +11,11 @@ import lombok.*;
 @EqualsAndHashCode
 @Builder
 @ToString
-public class Table {
+public class OrderTable {
     private Long id;
-    private Organization organization;
-    private Integer number;
-    private Integer seats;
+    private Table table;
+    private User user;
+    private Date dateOf;
+    private Date dateTo;
     private Integer prise;
 }
