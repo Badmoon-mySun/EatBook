@@ -1,0 +1,80 @@
+body {
+	color: #b01030;
+	background-color: #1b1b1b;
+}
+.btn btn-primary dropdown-toggle {
+	width: 1000px;
+}
+.nav.navbar-nav li a {
+	color: #b01030;
+}
+
+.bg-company-red {
+	background-color: black !important;
+}
+
+
+.navbar-default .navbar-brand {
+	color: #b01030;
+}
+.backpicture {
+	position: relative;
+	width: 60%;
+	height: 89vh;
+	background: url("restaurants/schema.png") top right no-repeat;
+	background-size: cover;
+}
+.inform {
+	text-align: center;
+	font-size: 30px;
+}
+.listtable {
+
+}
+.table {
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 50px;
+	margin-top: 50px;
+	height: 200px;
+	width: 90%;
+	background-color: white;
+	border-radius: 20px;
+}
+.bloc {
+	height: 70%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+.block2 {
+	font-size: 20px;
+	margin-top: 8px;
+	margin-left: 25px;
+}
+.htext {
+	padding: 20px 15px;
+}
+.blo {
+	margin-left: 10px;
+}
+#parent_popup {
+	background: #000;
+	height: 100%;
+	opacity: 0.9;
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	display: none;
+}
+#popup {
+	background-color: #00f;
+	height: 200px;
+	position: fixed;
+	top: 100px;
+	left: 40%;
+	color: #f00;
+	width: 300px;
+}

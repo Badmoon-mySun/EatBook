@@ -219,6 +219,15 @@
         <servlet-name>organization</servlet-name>
         <url-pattern>/organization</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>tables</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.TablesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tables</servlet-name>
+        <url-pattern>/tables</url-pattern>
+    </servlet-mapping>
 <!--    -->
 
 
