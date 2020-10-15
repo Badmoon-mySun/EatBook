@@ -1,3 +1,47 @@
+function updateFeed(organizations, divElement) {
+    let htmlElement = '';
+    for (let i = 0; i < organizations.length; i++) {
+        htmlElement += '<div class="card" style="width: 350px">\n';
+        htmlElement += '    <div class="border">';
+        htmlElement += '        <div class="wrap">';
+        htmlElement += '            <div class="product-wrap">';
+        htmlElement += '                <a href=""><img class="imgCard" src="/image?name=' + organizations[i]['image'] + '"></a>';
+        htmlElement += '            </div>';
+        htmlElement += '            <div class="loop-action">';
+        htmlElement += '                <a class="add-to-cart">' + organizations[i]['type'] + '</a>';
+        htmlElement += '                <a href="/organization?id=' + organizations[i]['id'] + '" class="loop-add-to-cart">Подробнее</a>';
+        htmlElement += '            </div>';
+        htmlElement += '        </div>';
+        htmlElement += '        <div class="product-info">';
+        htmlElement += '           <h3 class="product-title">' + organizations[i]['name'] + '</h3>';
+        htmlElement += '           <div class="price">' + organizations[i]['address'] + '</div>';
+        htmlElement += '        </div>';
+        htmlElement += '    </div>';
+        htmlElement += '</div>';
+    }
+    console.log(htmlElement);
+
+    divElement.html(htmlElement);
+}
+
+function sendAjax(text, category) {
+    let data = {
+        "search": text,
+        "category": category
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "/organizations",
+        data: JSON.stringify(data),
+        success: function (response) {
+            updateFeed(response, $('#content'))
+        },
+        dataType: "json",
+        contentType: "application/json"
+    });
+}
+
 function autocomplete(inp, arr) {
   var currentFocus;
   inp.addEventListener("input", function(e) {

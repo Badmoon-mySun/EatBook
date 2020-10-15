@@ -288,14 +288,14 @@
         <servlet-name>discount</servlet-name>
     </filter-mapping>
 
-<!--    <filter>-->
-<!--        <filter-name>jsonValidate</filter-name>-->
-<!--        <filter-class>ru.itis.eatbook.filters.JsonPostValidationFilter</filter-class>-->
-<!--    </filter>-->
-<!--    <filter-mapping>-->
-<!--        <filter-name>jsonValidate</filter-name>-->
-<!--        <servlet-name>organization</servlet-name>-->
-<!--    </filter-mapping>-->
+    <filter>
+        <filter-name>jsonValidate</filter-name>
+        <filter-class>ru.itis.eatbook.filters.JsonPostValidationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>jsonValidate</filter-name>
+        <servlet-name>organizationsFeed</servlet-name>
+    </filter-mapping>
 
     <filter>
         <filter-name>commentValidate</filter-name>
