@@ -13,7 +13,7 @@ public class OrderTablesServiceImpl implements OrderTablesService {
         this.repository = repository;
     }
 
-    public List<OrderTable> getTablesByOrganizationId(Long id) {
+    public List<OrderTable> getAllOrdersByTableId(Long id) {
         return repository.findAllOrdersByTableId(id);
     }
 }

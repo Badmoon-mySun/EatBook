@@ -304,6 +304,7 @@
     <filter-mapping>
         <filter-name>jsonValidate</filter-name>
         <servlet-name>organizationsFeed</servlet-name>
+        <servlet-name>tables</servlet-name>
     </filter-mapping>
 
     <filter>
