@@ -228,6 +228,15 @@
         <servlet-name>tables</servlet-name>
         <url-pattern>/tables</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ajaxTable</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AjaxTableAvailableTimeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxTable</servlet-name>
+        <url-pattern>/ajaxTable</url-pattern>
+    </servlet-mapping>
 <!--    -->
 
 
@@ -304,7 +313,7 @@
     <filter-mapping>
         <filter-name>jsonValidate</filter-name>
         <servlet-name>organizationsFeed</servlet-name>
-        <servlet-name>tables</servlet-name>
+        <servlet-name>ajaxTable</servlet-name>
     </filter-mapping>
 
     <filter>

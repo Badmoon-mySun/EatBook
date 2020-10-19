@@ -5,5 +5,7 @@ import ru.itis.eatbook.models.OrderTable;
 import java.util.List;
 
 public interface OrderTablesService {
-    List<OrderTable> getTablesByOrganizationId(Long id);
+    List<OrderTable> getAllOrdersByTableId(Long id);
+
+    void newOrderTable(OrderTable orderTable);
 }

@@ -1,7 +1,7 @@
 function updateFeed(response, divElement) {
     let htmlElement = '';
     for (let i = 0; i < response['time'].length; i++) {
-        htmlElement += '<p><input name="time" type="radio" value="' + response['time'][i] + '"> ' + response['time'][i] + ':00 </p>';
+        htmlElement += '<p><input name="time" type="radio" value="' + response['time'][i] + '" required> ' + response['time'][i] + ':00 </p>';
     }
     console.log(htmlElement);
 
@@ -20,7 +20,7 @@ function sendAjax(table_number, id) {
 
     $.ajax({
         type: "POST",
-        url: "/tables?id=" + id,
+        url: "/ajaxTable?id=" + id,
         data: JSON.stringify(data),
         success: function (response) {
             updateFeed(response, $('#table-' + table_number + '-time'))

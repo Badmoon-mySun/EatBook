@@ -2,7 +2,6 @@ package ru.itis.eatbook.repositories;
 
 import ru.itis.eatbook.models.OrderTable;
 import ru.itis.eatbook.repositories.interfaces.OrderTableRepository;
-import ru.itis.eatbook.repositories.interfaces.OrganizationRepository;
 import ru.itis.eatbook.repositories.interfaces.TableRepository;
 import ru.itis.eatbook.repositories.interfaces.UsersRepository;
 import ru.itis.eatbook.repositories.mappers.OrderTableMapper;
@@ -21,6 +20,8 @@ public class OrderTableRepositoryJdbcImpl implements OrderTableRepository {
     private final String SQL_FIND_BY_ID = "SELECT * FROM ordertable WHERE id = ?";
     //language=SQL
     private final String SQL_FIND_ALL_BY_TABLE_ID = "SELECT * FROM ordertable WHERE `table` = ?";
+    //language=SQL
+    private final String SQL_SAVE = "INSERT INTO ordertable(`table` , user, date_of, date_to, prise) VALUES (?, ?, ?, ?, ?)";
 
     public OrderTableRepositoryJdbcImpl(DataSource dataSource, TableRepository tableRep, UsersRepository userRep) {
         rowMapper = new OrderTableMapper(tableRep, userRep);
@@ -29,7 +30,8 @@ public class OrderTableRepositoryJdbcImpl implements OrderTableRepository {
 
     @Override
     public void save(OrderTable entity) {
-
+        jdbcTemplate.update(SQL_SAVE, entity.getTable().getId(), entity.getUser().getId(),
+                entity.getDateOf().getTime(), entity.getDateTo().getTime(), entity.getPrise());
     }
 
     @Override

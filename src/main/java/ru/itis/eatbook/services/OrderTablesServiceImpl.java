@@ -16,4 +16,9 @@ public class OrderTablesServiceImpl implements OrderTablesService {
     public List<OrderTable> getAllOrdersByTableId(Long id) {
         return repository.findAllOrdersByTableId(id);
     }
+
+    @Override
+    public void newOrderTable(OrderTable orderTable) {
+        repository.save(orderTable);
+    }
 }

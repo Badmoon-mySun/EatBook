@@ -16,6 +16,8 @@ public class TableRepositoryJdbcImpl implements TableRepository {
     private RowMapper<Table> rowMapper;
 
     //language=SQL
+    private final String SQL_FIND_BY_ID = "SELECT * FROM `table` WHERE id = ?";
+    //language=SQL
     private final String SQL_FIND_ALL_BY_ORGANIZATION = "SELECT * FROM `table` WHERE organization = ?";
 
     public TableRepositoryJdbcImpl(DataSource dataSource, OrganizationRepository orgRep) {
@@ -40,7 +42,7 @@ public class TableRepositoryJdbcImpl implements TableRepository {
 
     @Override
     public Optional<Table> findById(Long id) {
-        return Optional.empty();
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_ID, rowMapper, id));
     }
 
     @Override

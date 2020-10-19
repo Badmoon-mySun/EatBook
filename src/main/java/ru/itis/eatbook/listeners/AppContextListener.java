@@ -74,5 +74,7 @@ public class AppContextListener implements ServletContextListener {
         servletContext.setAttribute("IMAGE_DIR", directoryProperties.getProperty("image_load_dir"));
 
         servletContext.setAttribute("fileService",  new FileServiceImpl());
+
+        servletContext.setAttribute("dateService", new DateServiceImpl());
     }
 }
