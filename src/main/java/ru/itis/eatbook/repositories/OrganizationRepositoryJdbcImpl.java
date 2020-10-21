@@ -26,6 +26,8 @@ public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
     //language=SQL
     private  final String SQL_UPDATE = "UPDATE organization " +
             "SET name = ?, type = ?, address = ?, image = ?, description = ? WHERE id = ?";
+    //language=SQL
+    private  final String SQL_SEARCH_IN_NAME = "SELECT * FROM organization WHERE name LIKE ? and type LIKE ?";
 
 
     public OrganizationRepositoryJdbcImpl(DataSource dataSource) {
@@ -58,5 +60,11 @@ public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
     @Override
     public List<Organization> findAll() {
         return jdbcTemplate.queryForList(SQL_FIND_ALL, rowMapper);
+    }
+
+    @Override
+    public List<Organization> findAllByNameAndType(String name, String type) {
+        name = "%" + name + "%";
+        return jdbcTemplate.queryForList(SQL_SEARCH_IN_NAME, rowMapper, name);
     }
 }

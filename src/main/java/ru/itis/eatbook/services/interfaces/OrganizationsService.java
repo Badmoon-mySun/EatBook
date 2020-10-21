@@ -7,5 +7,8 @@ import java.util.Optional;
 
 public interface OrganizationsService {
     Optional<Organization> getOrganizationById(Long id);
+
     List<Organization> getAllOrganization();
+
+    List<Organization> getOrganizationsByName(String name, String type);
 }

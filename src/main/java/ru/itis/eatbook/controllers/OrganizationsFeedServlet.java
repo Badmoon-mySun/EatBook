@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrganizationsFeedServlet extends HttpServlet {
@@ -29,18 +28,10 @@ public class OrganizationsFeedServlet extends HttpServlet {
 
         JSONObject jsonObject = (JSONObject) req.getAttribute("jsonObj");
 
-
-        String text = jsonObject.getString("search");
+        String search = jsonObject.getString("search");
         String category = jsonObject.getString("category");
 
-        Long id = 1L;
-        try {
-            id = Long.parseLong(text);
-        } catch (NumberFormatException ignore) {}
-
-        List<Organization> organizations = new ArrayList<>();
-        organizations.add(organizationsService.getOrganizationById(id).get());
-
+        List<Organization> organizations = organizationsService.getOrganizationsByName(search, category);
 
         String jsonResponse = objectMapper.writeValueAsString(organizations);
 

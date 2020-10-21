@@ -24,4 +24,9 @@ public class OrganizationServiceImpl implements OrganizationsService {
     public List<Organization> getAllOrganization() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Organization> getOrganizationsByName(String name, String type) {
+        return repository.findAllByNameAndType(name, type);
+    }
 }
