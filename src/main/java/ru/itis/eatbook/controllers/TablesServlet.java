@@ -56,10 +56,12 @@ public class TablesServlet extends HttpServlet {
                     .user(user)
                     .dateOf(dateOf)
                     .dateTo(dateTo)
-                    .prise(optionalTable.get().getPrise())
+                    .prise(optionalTable.get().getPrise() * hour)
                     .build();
 
             orderTablesService.newOrderTable(orderTable);
+
+            resp.sendRedirect("/successOrder");
         }
     }
 }

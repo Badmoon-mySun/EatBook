@@ -2,6 +2,8 @@ package ru.itis.eatbook.models;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,6 +15,6 @@ public class Review {
     private Long id;
     private User user;
     private Organization organization;
-    private String date;
+    private Date date;
     private String text;
 }

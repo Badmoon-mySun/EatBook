@@ -1,9 +1,10 @@
-function updateFeed(response, divElement) {
+function updateFeed(response, divElement, divPrise) {
     let htmlElement = '';
     for (let i = 0; i < response['time'].length; i++) {
         htmlElement += '<p><input name="time" type="radio" value="' + response['time'][i] + '" required> ' + response['time'][i] + ':00 </p>';
     }
-    console.log(htmlElement);
+
+    divPrise.html(response['prise']);
 
     divElement.html(htmlElement);
 }
@@ -11,6 +12,10 @@ function updateFeed(response, divElement) {
 function sendAjax(table_number, id) {
     let hours = document.getElementById("table-" + table_number + "-hours").value;
     let day = document.getElementById("table-" + table_number + "-day").value;
+
+    if (day === "---") {
+        return;
+    }
 
     let data = {
         "id": id,
@@ -23,7 +28,7 @@ function sendAjax(table_number, id) {
         url: "/ajaxTable?id=" + id,
         data: JSON.stringify(data),
         success: function (response) {
-            updateFeed(response, $('#table-' + table_number + '-time'))
+            updateFeed(response, $('#table-' + table_number + '-time'), $('#table-' + table_number + '-prise'))
         },
         dataType: "json",
         contentType: "application/json"

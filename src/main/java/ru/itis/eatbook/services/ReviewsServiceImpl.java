@@ -7,6 +7,7 @@ import ru.itis.eatbook.repositories.interfaces.ReviewRepository;
 import ru.itis.eatbook.services.interfaces.ReviewsService;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class ReviewsServiceImpl implements ReviewsService {
@@ -22,9 +23,9 @@ public class ReviewsServiceImpl implements ReviewsService {
     }
 
     @Override
-    public void saveNewReview(User user, Organization organization, String text) {
+    public void createAndSaveNewReview(User user, Organization organization, String text) {
         Review review = Review.builder()
-                .date("now")
+                .date(GregorianCalendar.getInstance().getTime())
                 .user(user)
                 .organization(organization)
                 .text(text)

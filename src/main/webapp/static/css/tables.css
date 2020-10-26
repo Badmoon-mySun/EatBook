@@ -78,3 +78,19 @@ body {
 	color: #f00;
 	width: 300px;
 }
+
+.order_success {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	color: white;
+}
+
+.order_info {
+	font-size: 25px;
+	flex-wrap: wrap;
+	width: 60%;
+}

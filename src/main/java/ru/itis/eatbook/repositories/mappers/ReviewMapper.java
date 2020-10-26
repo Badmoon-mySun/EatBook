@@ -9,6 +9,7 @@ import ru.itis.eatbook.repositories.interfaces.UsersRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Optional;
 
 public class ReviewMapper implements RowMapper<Review> {
@@ -27,12 +28,14 @@ public class ReviewMapper implements RowMapper<Review> {
                 organizationRepository.findById(resultSet.getLong("organization"));
         Optional<User> optionalUser = usersRepository.findById(resultSet.getLong("user"));
 
+        Date date = new Date(Long.parseLong(resultSet.getString("date")));
+
         return Review.builder()
                 .id(resultSet.getLong("id"))
                 .user(optionalUser.orElse(null))
                 .organization(optionalOrganization.orElse(null))
                 .text(resultSet.getString("text"))
-                .date(resultSet.getString("date"))
+                .date(date)
                 .build();
     }
 }

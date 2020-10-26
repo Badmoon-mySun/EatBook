@@ -44,11 +44,11 @@
                                         <tr><td></td><td></td></tr>
                                         <tr><td class="active">Телефон</td><td>${user.phone}</td></tr>
                                         <tr><td></td><td></td></tr>
-                                        <#if userGender??>
+                                        <#if user.gender??>
                                             <tr><td class="active">Пол:</td><td>${user.gender}</td></tr>
                                             <tr><td></td><td></td></tr>
                                         </#if>
-                                        <#if userAge != 0>
+                                        <#if user.age != 0>
                                             <tr><td class="active">Полных лет:</td><td>${user.age}</td></tr>
                                         </#if>
                                         <tr><td></td><td></td></tr>

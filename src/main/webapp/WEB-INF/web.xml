@@ -237,6 +237,15 @@
         <servlet-name>ajaxTable</servlet-name>
         <url-pattern>/ajaxTable</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>success</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.SuccessOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>success</servlet-name>
+        <url-pattern>/successOrder</url-pattern>
+    </servlet-mapping>
 <!--    -->
 
 
@@ -251,12 +260,23 @@
     </filter-mapping>
 
     <filter>
+        <filter-name>userAuth</filter-name>
+        <filter-class>ru.itis.eatbook.filters.UserAuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>userAuth</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>checkingUserAuth</filter-name>
         <filter-class>ru.itis.eatbook.filters.CheckingUserAuthFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>checkingUserAuth</filter-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>tables</servlet-name>
+        <servlet-name>profile</servlet-name>
+        <servlet-name>profile-edit</servlet-name>
     </filter-mapping>
 
     <filter>

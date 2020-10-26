@@ -1,13 +1,11 @@
 package ru.itis.eatbook.controllers;
 
-import org.json.JSONObject;
 import ru.itis.eatbook.models.Organization;
 import ru.itis.eatbook.models.Review;
 import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.services.interfaces.OrganizationsService;
 import ru.itis.eatbook.services.interfaces.ReviewsService;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +38,6 @@ public class OrganizationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("hello from filter");
         String review = req.getParameter("review_text");
         Long id = Long.parseLong(req.getParameter("id"));
 
@@ -53,7 +50,7 @@ public class OrganizationServlet extends HttpServlet {
         Optional<Organization> optionalOrganization = organizationsService.getOrganizationById(id);
 
         if (optionalOrganization.isPresent()) {
-            reviewsService.saveNewReview(user, optionalOrganization.get(), review);
+            reviewsService.createAndSaveNewReview(user, optionalOrganization.get(), review);
             resp.sendRedirect(req.getRequestURI() + "?id=" + id);
         }
     }

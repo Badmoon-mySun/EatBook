@@ -9,7 +9,7 @@
         <#nested>
     </body>
 <#if script != "">
-    <script src="${script}"></script>
+    <script src="${script}" charset="utf-8"></script>
 </#if>
 </html>
 </#macro>

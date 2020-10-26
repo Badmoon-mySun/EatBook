@@ -1,5 +1,6 @@
 package ru.itis.eatbook.repositories;
 
+import ru.itis.eatbook.repositories.mappers.RowMapper;
 import ru.itis.eatbook.repositories.mappers.UserMapper;
 import ru.itis.eatbook.models.User;
 import ru.itis.eatbook.repositories.interfaces.UsersRepository;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     private SimpleJdbcTemplate jdbcTemplate;
+    private RowMapper<User> rowMapper;
 
     //language=SQL
     private final String SQL_FIND_ALL = "SELECT * FROM USER";
@@ -31,6 +33,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     public UsersRepositoryJdbcImpl(DataSource dataSource) {
         jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        rowMapper = new UserMapper();
     }
 
     @Override
@@ -52,21 +55,21 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     @Override
     public List<User> findAll() {
-        return jdbcTemplate.queryForList(SQL_FIND_ALL, new UserMapper());
+        return jdbcTemplate.queryForList(SQL_FIND_ALL, rowMapper);
     }
 
     @Override
     public Optional<User> findById(Long id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new UserMapper(), id));
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_ID, rowMapper, id));
     }
 
     @Override
     public Optional<User> findByEmail(String email) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_EMAIL, new UserMapper(), email));
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_EMAIL, rowMapper, email));
     }
 
     @Override
     public Optional<User> findByUuid(String uuid) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_UUID, new UserMapper(), uuid));
+        return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_FIND_BY_UUID, rowMapper, uuid));
     }
 }

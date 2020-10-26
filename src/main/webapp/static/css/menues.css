@@ -21,8 +21,6 @@ body {
 	position: relative;
 	width: 60%;
 	height: 89vh;
-	background: url("../../semestrovka_front/css/restaurants/schema.png") top right no-repeat;
-	background-size: cover; 
 }
 .information {
 	text-align: center;

@@ -23,7 +23,7 @@
                                 <h3>${user.name}</h3>
                                 <small class="label label-warning">Казань</small>
                                 <form action="/user-avatar-upload" enctype="multipart/form-data" method="post">
-                                    <p><input type="file" name="avatar"
+                                    <p><input type="file" name="avatar" accept=".jpg, .jpeg, .png"
                                               onchange="this.form.submit();" style="padding: 30px">
                                 </form>
                             </div>
@@ -46,8 +46,8 @@
                                             </#if>
                                             <h4 class="htext">Имя<input cols="30" rows="1" value="${user.name}" name="username" id="name" onkeyup="return proverkaName(this);" class="intext" pattern="^[А-Яа-яЁёA-Za-z]+$" required></h4>
                                             <h4 class="htext">Телефон<input type="text" value="${user.phone}" name="phone" class="intext" id="number" onkeyup="return proverkaNumber(this);" placeholder="+79332221100" pattern="(\+7)+[0-9]{10}" required></h4>
-                                            <h4 class="htext">Полных лет<textarea cols="30" rows="1" name="age" <#if user.age??> value="${user.age}" </#if> id="age" class="intext"
-                                                                                  onkeyup="return proverkaAge(this);"></textarea></h4>
+                                            <h4 class="htext">Полных лет<textarea cols="30" rows="1" name="age" id="age" class="intext"
+                                                                                  onkeyup="return proverkaAge(this);"><#if user.age != 0>${user.age}</#if></textarea></h4>
                                             <h4 class="htext">Пол<select name="gender">
                                                                     <option <#if user.gender?? && user.gender == "Man">selected</#if> value="Man" class="intext">Man</option>
                                                                     <option <#if user.gender?? && user.gender == "Woman">selected</#if> value="Woman" class="intext">Woman</option>

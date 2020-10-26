@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ReviewsService {
     List<Review> getAllOrganizationReviews(Long id);
-    void saveNewReview(User user, Organization organization, String text);
+    void createAndSaveNewReview(User user, Organization organization, String text);
 }

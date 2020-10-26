@@ -20,6 +20,6 @@ public class DiscountsFeedServlet extends HttpServlet {
 
         req.setAttribute("discounts", discounts);
 
-        req.getRequestDispatcher("/WEB-INF/pages/discountsFeed.ftl").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/discounts-feed.ftl").forward(req, resp);
     }
 }

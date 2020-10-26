@@ -65,6 +65,7 @@ public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
     @Override
     public List<Organization> findAllByNameAndType(String name, String type) {
         name = "%" + name + "%";
-        return jdbcTemplate.queryForList(SQL_SEARCH_IN_NAME, rowMapper, name);
+        type = "%" + type + "%";
+        return jdbcTemplate.queryForList(SQL_SEARCH_IN_NAME, rowMapper, name, type);
     }
 }

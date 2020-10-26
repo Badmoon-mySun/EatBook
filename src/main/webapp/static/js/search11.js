@@ -9,7 +9,7 @@ function updateFeed(organizations, divElement) {
         htmlElement += '            </div>';
         htmlElement += '            <div class="loop-action">';
         htmlElement += '                <a class="add-to-cart">' + organizations[i]['type'] + '</a>';
-        htmlElement += '                <a href="/organization?id=' + organizations[i]['id'] + '" class="loop-add-to-cart">Подробнее</a>';
+        htmlElement += '                <a href="/organization?id=' + organizations[i]['id'] + '" class="loop-add-to-cart">More details</a>';
         htmlElement += '            </div>';
         htmlElement += '        </div>';
         htmlElement += '        <div class="product-info">';
@@ -19,7 +19,6 @@ function updateFeed(organizations, divElement) {
         htmlElement += '    </div>';
         htmlElement += '</div>';
     }
-    console.log(htmlElement);
 
     divElement.html(htmlElement);
 }

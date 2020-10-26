@@ -29,7 +29,7 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     private  final String SQL_UPDATE = "UPDATE review " +
             "SET user = ?, organization = ?, text = ?, date = ? WHERE id = ?";
     //language=SQL
-    private final String SQL_FIND_BY_ORGANIZATION_ID = "SELECT * FROM review WHERE organization = ?";
+    private final String SQL_FIND_BY_ORGANIZATION_ID = "SELECT * FROM review WHERE organization = ? ORDER BY ~date";
 
     public ReviewRepositoryJdbcImpl(DataSource dataSource, OrganizationRepository orgRep, UsersRepository userRep) {
         jdbcTemplate = new SimpleJdbcTemplate(dataSource);
@@ -39,7 +39,7 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     @Override
     public void save(Review entity) {
         jdbcTemplate.update(SQL_SAVE, entity.getUser().getId(),
-                entity.getOrganization().getId(), entity.getText(), entity.getDate());
+                entity.getOrganization().getId(), entity.getText(), entity.getDate().getTime());
     }
 
     @Override
@@ -49,8 +49,8 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
 
     @Override
     public void update(Review entity) {
-        jdbcTemplate.update(SQL_UPDATE, entity.getUser().getId(),
-                entity.getOrganization().getId(), entity.getText(), entity.getDate(), entity.getId());
+        jdbcTemplate.update(SQL_UPDATE, entity.getUser().getId(), entity.getOrganization().getId(),
+                entity.getText(), entity.getDate().getTime(), entity.getId());
     }
 
     @Override

@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="list">
-        <a href="listTable.html">
+        <a href="/tables?id=${organization.id}">
             <div class="listbutton">Забронировать свободные столики
             </div>
         </a>
@@ -57,7 +57,7 @@
                         <div class="comment__inform">
                             <div class="comment__author">
                                 <div class="author__name">${review.user.name}</div>
-                                <div class="author__day">${review.date}</div>
+                                <div class="author__day">${review.date?date?string["HH:mm, dd.MM.yyyy"]}</div>
                             </div>
                             <div class="comment__text">
                                 <p>${review.text}</p>

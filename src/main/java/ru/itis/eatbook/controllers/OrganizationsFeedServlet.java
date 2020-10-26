@@ -17,7 +17,12 @@ public class OrganizationsFeedServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/organizationsFeed.ftl").forward(req, resp);
+        OrganizationsService organizationsService =
+                (OrganizationsService) getServletContext().getAttribute("organizationsService");
+
+        req.setAttribute("organizations", organizationsService.getAllOrganization());
+
+        req.getRequestDispatcher("/WEB-INF/pages/organizations-feed.ftl").forward(req, resp);
     }
 
 
@@ -36,7 +41,6 @@ public class OrganizationsFeedServlet extends HttpServlet {
         String jsonResponse = objectMapper.writeValueAsString(organizations);
 
         resp.setContentType("application/json");
-        System.out.println(jsonResponse);
         resp.getWriter().println(jsonResponse);
     }
 }

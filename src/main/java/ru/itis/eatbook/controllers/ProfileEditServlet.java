@@ -28,9 +28,7 @@ public class ProfileEditServlet extends HttpServlet {
         user.setName(name);
         user.setPhone(phone);
         user.setGender(gender);
-        if (age != null && !age.equals("")) {
-            user.setAge(Integer.parseInt(age));
-        }
+        user.setAge(Integer.parseInt(age));
 
         usersService.updateUser(user);
 

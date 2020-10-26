@@ -4,7 +4,9 @@
 <@common.bootstrap_common "Home" "/static/css/menues.css" "">
     <#include "bases/bootstrap_nav.ftl">
     <div class="bg">
-        <div class="backpicture">
+        <div class="backpicture" style="
+        background: url('/static/image/schema.png') top right no-repeat;
+        background-size: cover;">
         </div>
     </div>
 
