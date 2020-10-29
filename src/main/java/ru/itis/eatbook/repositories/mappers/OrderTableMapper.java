@@ -30,8 +30,8 @@ public class OrderTableMapper implements RowMapper<OrderTable> {
                 .id(resultSet.getLong("id"))
                 .table(optionalTable.orElse(null))
                 .user(optionalUser.orElse(null))
-                .dateOf(new Date(resultSet.getLong("date_of")))
-                .dateTo(new Date(resultSet.getLong("date_to")))
+                .dateOf(new Date(resultSet.getLong("dateOf")))
+                .dateTo(new Date(resultSet.getLong("dateTo")))
                 .prise(resultSet.getInt("prise"))
                 .build();
     }

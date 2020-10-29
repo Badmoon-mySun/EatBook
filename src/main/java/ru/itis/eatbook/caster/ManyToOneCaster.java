@@ -1,0 +1,18 @@
+package ru.itis.eatbook.caster;
+
+import ru.itis.eatbook.annotation.ManyToOne;
+import ru.itis.eatbook.utils.SqlUtils;
+
+import java.lang.reflect.Field;
+
+public class ManyToOneCaster implements Castable {
+    @Override
+    public String cast(Field field) {
+        return "`" + field.getName() + "` INT, FOREIGN KEY (`" + field.getName() + "`)" + SqlUtils.recognizeConstraints(field) + " " + SqlUtils.recognizeForeignKey(field);
+    }
+
+    @Override
+    public boolean isSupport(Field field) {
+        return field.getAnnotation(ManyToOne.class) != null;
+    }
+}

@@ -12,7 +12,7 @@
                 <h1><font size="20">${discount.title}</font></h1>
                 <div class="padd" style="padding: 10px">
                     <h3><font>${discount.organization.type}: ${discount.organization.name}</font></h3>
-                    <h4 style="margin-top: 20px;">До ${discount.date}</h4>
+                    <h4 style="margin-top: 20px;">До ${discount.date?date?string["dd.MM.yyyy"]}</h4>
                 </div>
             </div>
         </div>

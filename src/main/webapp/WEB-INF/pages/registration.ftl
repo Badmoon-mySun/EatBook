@@ -27,7 +27,7 @@
             <span></span><br>
             <label for="number">Телефон</label>
             <input type="text" name="phone" <#if phone??>value="${phone}"</#if> id="number" onkeyup="return proverkaNumber(this);"
-                   maxlength="12" placeholder="+79332221100" pattern="(\+7)+[0-9]{10}" required>
+                   maxlength="12" placeholder="+79332221100" pattern="(8|\+7)+[0-9]{10}" required>
             <span> </span><br>
             <label for="email">Эл.почта</label>
             <input type="email" name="email" <#if email??>value="${email}"</#if> id="email"

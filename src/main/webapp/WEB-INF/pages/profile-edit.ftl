@@ -45,7 +45,7 @@
                                                 <div style="font-size: 16px; color: red;">${error}</div>
                                             </#if>
                                             <h4 class="htext">Имя<input cols="30" rows="1" value="${user.name}" name="username" id="name" onkeyup="return proverkaName(this);" class="intext" pattern="^[А-Яа-яЁёA-Za-z]+$" required></h4>
-                                            <h4 class="htext">Телефон<input type="text" value="${user.phone}" name="phone" class="intext" id="number" onkeyup="return proverkaNumber(this);" placeholder="+79332221100" pattern="(\+7)+[0-9]{10}" required></h4>
+                                            <h4 class="htext">Телефон<input type="text" value="${user.phone}" name="phone" class="intext" id="number" onkeyup="return proverkaNumber(this);" placeholder="+79332221100" pattern="(8|\+7)+[0-9]{10}" required></h4>
                                             <h4 class="htext">Полных лет<textarea cols="30" rows="1" name="age" id="age" class="intext"
                                                                                   onkeyup="return proverkaAge(this);"><#if user.age != 0>${user.age}</#if></textarea></h4>
                                             <h4 class="htext">Пол<select name="gender">

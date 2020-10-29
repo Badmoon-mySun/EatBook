@@ -6,6 +6,7 @@ import ru.itis.eatbook.repositories.*;
 import ru.itis.eatbook.repositories.interfaces.*;
 import ru.itis.eatbook.services.*;
 import ru.itis.eatbook.services.interfaces.*;
+import ru.itis.eatbook.utils.DBCreator;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -35,6 +36,8 @@ public class AppContextListener implements ServletContextListener {
         hikariConfig.setPassword(dbProperties.getProperty("MYSQL_DB_PASSWORD"));
         hikariConfig.setMaximumPoolSize(Integer.parseInt(dbProperties.getProperty("MYSQL_DB_MAX_POOL_SIZE")));
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+
+//        DBCreator.create(dataSource);
 
         //# Send to servlet context
         servletContext.setAttribute("dataSource", dataSource);

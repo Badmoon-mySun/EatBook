@@ -21,7 +21,7 @@ public class OrderTableRepositoryJdbcImpl implements OrderTableRepository {
     //language=SQL
     private final String SQL_FIND_ALL_BY_TABLE_ID = "SELECT * FROM ordertable WHERE `table` = ?";
     //language=SQL
-    private final String SQL_SAVE = "INSERT INTO ordertable(`table` , user, date_of, date_to, prise) VALUES (?, ?, ?, ?, ?)";
+    private final String SQL_SAVE = "INSERT INTO ordertable(`table` , user, dateOf, dateTo, prise) VALUES (?, ?, ?, ?, ?)";
 
     public OrderTableRepositoryJdbcImpl(DataSource dataSource, TableRepository tableRep, UsersRepository userRep) {
         rowMapper = new OrderTableMapper(tableRep, userRep);
