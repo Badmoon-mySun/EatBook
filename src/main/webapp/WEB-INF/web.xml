@@ -246,6 +246,78 @@
         <servlet-name>success</servlet-name>
         <url-pattern>/successOrder</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>adminOrganizations</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AdminOrganizationsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminOrganizations</servlet-name>
+        <url-pattern>/adminOrganizations</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminOrganizationEdit</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AdminOrganizationEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminOrganizationEdit</servlet-name>
+        <url-pattern>/adminOrganizationEdit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>organizationImageUpload</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.OrganizationImageUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>organizationImageUpload</servlet-name>
+        <url-pattern>/organization-image-upload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminNewOrganization</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AdminNewOrganizationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminNewOrganization</servlet-name>
+        <url-pattern>/newOrganization</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminDiscounts</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AdminDiscountsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminDiscounts</servlet-name>
+        <url-pattern>/adminDiscounts</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>newDiscount</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AdminNewDiscountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newDiscount</servlet-name>
+        <url-pattern>/newDiscount</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>adminDiscountEdit</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.AdminDiscountEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminDiscountEdit</servlet-name>
+        <url-pattern>/adminDiscountEdit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>discountImageUpload</servlet-name>
+        <servlet-class>ru.itis.eatbook.controllers.DiscountImageUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>discountImageUpload</servlet-name>
+        <url-pattern>/discount-image-upload</url-pattern>
+    </servlet-mapping>
 <!--    -->
 
 
@@ -343,6 +415,22 @@
     <filter-mapping>
         <filter-name>commentValidate</filter-name>
         <servlet-name>organization</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>adminCheck</filter-name>
+        <filter-class>ru.itis.eatbook.filters.AdminCheckFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>adminCheck</filter-name>
+        <servlet-name>adminDiscountEdit</servlet-name>
+        <servlet-name>adminDiscounts</servlet-name>
+        <servlet-name>newDiscount</servlet-name>
+        <servlet-name>adminNewOrganization</servlet-name>
+        <servlet-name>adminOrganizationEdit</servlet-name>
+        <servlet-name>adminOrganizations</servlet-name>
+        <servlet-name>organizationImageUpload</servlet-name>
+        <servlet-name>discountImageUpload</servlet-name>
     </filter-mapping>
 
     <filter>

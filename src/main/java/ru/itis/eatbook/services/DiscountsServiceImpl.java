@@ -23,4 +23,19 @@ public class DiscountsServiceImpl implements DiscountsService {
     public Optional<Discount> getDiscountById(Long id) {
         return discountRepository.findById(id);
     }
+
+    @Override
+    public void saveDiscount(Discount discount) {
+        discountRepository.save(discount);
+    }
+
+    @Override
+    public void deleteDiscount(Discount discount) {
+        discountRepository.delete(discount);
+    }
+
+    @Override
+    public void changeDiscount(Discount discount) {
+        discountRepository.update(discount);
+    }
 }

@@ -10,6 +10,7 @@ import java.util.*;
 
 public class DateServiceImpl implements DateService {
     DateFormat dateFormat = new SimpleDateFormat("EEEE, d MMM y");
+    DateFormat anotherDateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     @Override
     public List<String> getDaysForAWeek() {
@@ -26,12 +27,18 @@ public class DateServiceImpl implements DateService {
 
     @Override
     public Date getDateByString(String date) {
-        Date result;
+        Date result = null;
 
         try {
             result = dateFormat.parse(date);
-        } catch (ParseException e) {
-            throw new IllegalStateException(e);
+        } catch (ParseException ignore) { }
+
+        if (result == null) {
+            try {
+                result = anotherDateFormat.parse(date);
+            } catch (ParseException e) {
+                throw new IllegalStateException(e);
+            }
         }
 
         return result;

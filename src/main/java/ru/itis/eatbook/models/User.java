@@ -25,4 +25,5 @@ public class User {
     private String password;
     @Constraint(notNull = true, unic = true)
     private String uuid;
+    private String role;
 }

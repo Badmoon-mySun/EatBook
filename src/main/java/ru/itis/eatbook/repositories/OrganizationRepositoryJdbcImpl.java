@@ -20,7 +20,7 @@ public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
     private final String SQL_FIND_BY_ID = "SELECT * FROM organization WHERE id = ?";
     //language=SQL
     private final String SQL_SAVE =
-            "INSERT INTO organization(name, type, address, image, description) VALUES (?, ?, ?, ?, ?)";
+            "INSERT INTO organization(name, type, address, description) VALUES (?, ?, ?, ?)";
     //language=SQL
     private  final String SQL_DELETE = "DELETE FROM organization WHERE id = ?";
     //language=SQL
@@ -38,7 +38,7 @@ public class OrganizationRepositoryJdbcImpl implements OrganizationRepository {
     @Override
     public void save(Organization entity) {
         jdbcTemplate.update(SQL_SAVE, entity.getName(), entity.getType(),
-                entity.getAddress(), entity.getImage(), entity.getDescription());
+                entity.getAddress(), entity.getDescription());
     }
 
     @Override

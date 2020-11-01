@@ -29,4 +29,20 @@ public class OrganizationServiceImpl implements OrganizationsService {
     public List<Organization> getOrganizationsByName(String name, String type) {
         return repository.findAllByNameAndType(name, type);
     }
+
+    @Override
+    public void updateOrganization(Organization organization) {
+        repository.update(organization);
+    }
+
+    @Override
+    public void deleteOrganization(Organization organization) {
+        repository.delete(organization);
+    }
+
+    @Override
+    public void saveOrganization(Organization organization) {
+        repository.save(organization);
+    }
+
 }

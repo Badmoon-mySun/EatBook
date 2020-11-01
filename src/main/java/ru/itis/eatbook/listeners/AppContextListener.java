@@ -47,15 +47,15 @@ public class AppContextListener implements ServletContextListener {
 
         servletContext.setAttribute("usersService", usersService);
 
-        DiscountRepository discountRepository = new DiscountRepositoryJdbcImpl(dataSource);
-        DiscountsService discountsService = new DiscountsServiceImpl(discountRepository);
-
-        servletContext.setAttribute("discountsService", discountsService);
-
         OrganizationRepository organizationRepository = new OrganizationRepositoryJdbcImpl(dataSource);
         OrganizationsService organizationsService = new OrganizationServiceImpl(organizationRepository);
 
         servletContext.setAttribute("organizationsService", organizationsService);
+
+        DiscountRepository discountRepository = new DiscountRepositoryJdbcImpl(dataSource, organizationRepository);
+        DiscountsService discountsService = new DiscountsServiceImpl(discountRepository);
+
+        servletContext.setAttribute("discountsService", discountsService);
 
         ReviewRepository reviewRepository =
                 new ReviewRepositoryJdbcImpl(dataSource, organizationRepository, usersRepository);
